@@ -24,6 +24,7 @@ class MyHomePage extends StatelessWidget{
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
+          
           alignment: Alignment.bottomCenter,
           //constraints: const BoxConstraints.expand(),
           decoration: const BoxDecoration(
@@ -51,7 +52,7 @@ class MyHomePage extends StatelessWidget{
               //end
       
               const CustomSlider(),
-              const CustomCarouselSlider(),
+             // const CustomCarouselSlider(),
               const TeacherWidget()
             ],
           ),
