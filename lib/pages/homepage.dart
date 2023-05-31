@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:schoolwale/widgets/slider.dart';
 import 'package:schoolwale/widgets/nav_drawer.dart';
 import 'package:schoolwale/widgets/carousel_slider.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:schoolwale/widgets/teachers_widget.dart';
 
 class MyHomePage extends StatelessWidget{
   const MyHomePage({super.key});
@@ -21,98 +21,101 @@ class MyHomePage extends StatelessWidget{
         
       ),
       ),
-      body: Container(
-        alignment: Alignment.bottomCenter,
-        constraints: const BoxConstraints.expand(),
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/layout-1.png"),
-            fit: BoxFit.cover,
-          ),
-        ),
-        
-        child: Column
-        (
-          mainAxisAlignment: MainAxisAlignment.start,
-          
-          children: <Widget>[
-            Container(
-              
-              child: const Padding(
-                padding: EdgeInsets.only(top:30,left: 20),
-                child: Text('Hello \nChintu', style: TextStyle(
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold
-                ),),
-              ),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Container(
+          alignment: Alignment.bottomCenter,
+          //constraints: const BoxConstraints.expand(),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/layout-1.png"),
+              fit: BoxFit.cover,
             ),
-            //end
-
-            const CustomSlider(),
-            const CustomCarouselSlider(),
-
-          ],
-        ),
+          ),
           
-
-
-
-
-
-
-
-
-
-
-        //   child: ListView(
-        //     // This next line does the trick.
-        //     scrollDirection: Axis.horizontal,
-        //     children: <Widget>[
-        //       Container(
-        //         width: 160.0,
-        //         color: Colors.red,
-        //       ),
-        //       Container(
-        //         width: 160.0,
-        //         color: Colors.blue,
-        //       ),
-        //       Container(
-        //         width: 160.0,
-        //         color: Colors.green,
-        //       ),
-        //       Container(
-        //         width: 160.0,
-        //         color: Colors.yellow,
-        //       ),
-        //       Container(
-        //         width: 160.0,
-        //         color: Colors.orange,
-        //       ),
-        //     ],
-        //   ),
-        // ),
+          child: Column
+          (
+            mainAxisAlignment: MainAxisAlignment.start,
+            
+            children: <Widget>[
+              Container(
+                
+                child: const Padding(
+                  padding: EdgeInsets.only(top:30,left: 20),
+                  child: Text('Hello \nChintu', style: TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold
+                  ),),
+                ),
+              ),
+              //end
       
-      // bottomNavigationBar: BottomNavigationBar(
-      //   items: const [
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.home),
-      //       label: "Home"
-
-      //       ),
-      //       BottomNavigationBarItem(
-      //       icon: Icon(Icons.announcement),
-      //       label: "Announcments"
-
-      //       ),BottomNavigationBarItem(
-      //       icon: Icon(Icons.book),
-      //       label: "Result"
-
-      //       ),BottomNavigationBarItem(
-      //       icon: Icon(Icons.account_box_rounded),
-      //       label: "Profile"
-
-      //       ),
-      //   ]),
-    ));
+              const CustomSlider(),
+              const CustomCarouselSlider(),
+              const TeacherWidget()
+            ],
+          ),
+            
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+          //   child: ListView(
+          //     // This next line does the trick.
+          //     scrollDirection: Axis.horizontal,
+          //     children: <Widget>[
+          //       Container(
+          //         width: 160.0,
+          //         color: Colors.red,
+          //       ),
+          //       Container(
+          //         width: 160.0,
+          //         color: Colors.blue,
+          //       ),
+          //       Container(
+          //         width: 160.0,
+          //         color: Colors.green,
+          //       ),
+          //       Container(
+          //         width: 160.0,
+          //         color: Colors.yellow,
+          //       ),
+          //       Container(
+          //         width: 160.0,
+          //         color: Colors.orange,
+          //       ),
+          //     ],
+          //   ),
+          // ),
+        
+        // bottomNavigationBar: BottomNavigationBar(
+        //   items: const [
+        //     BottomNavigationBarItem(
+        //       icon: Icon(Icons.home),
+        //       label: "Home"
+      
+        //       ),
+        //       BottomNavigationBarItem(
+        //       icon: Icon(Icons.announcement),
+        //       label: "Announcments"
+      
+        //       ),BottomNavigationBarItem(
+        //       icon: Icon(Icons.book),
+        //       label: "Result"
+      
+        //       ),BottomNavigationBarItem(
+        //       icon: Icon(Icons.account_box_rounded),
+        //       label: "Profile"
+      
+        //       ),
+        //   ]),
+          ),
+      ));
   }
 }

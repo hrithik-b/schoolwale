@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../pages/markscard.dart';
+
 
 class MajorExamWidget extends StatelessWidget {
   final String ExamName;
@@ -14,10 +16,7 @@ class MajorExamWidget extends StatelessWidget {
       child: Stack(
         children: [
           GestureDetector(
-            onTap: () => {/*Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const ResultPage()),
-  )*/},
+            onTap: () => {},
             child: Container(
               width: 360,
               height: 120,
@@ -41,12 +40,18 @@ class MajorExamWidget extends StatelessWidget {
             width: 100,
             height: 40,
             child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                     Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MarksCard()),
+                  );
+                  },
                   
                   style: ElevatedButton.styleFrom(
                       elevation: 12.0,
                       textStyle: const TextStyle(color: Colors.white)),
                   child:  Text(ExamName),
+                  
                 ),
             
           ),

@@ -22,7 +22,8 @@ class ResultPage extends StatelessWidget {
                children: const [
                  TestMarksWidget(testNameMain: 'Class Tests',testNameSub1:'FA 1',testNameSub2:'FA 2' ,),
                  TestMarksWidget(testNameMain: 'Internal Exams',testNameSub1:'Internal 1',testNameSub2:'Internal 2' ,),
-                 MajorExamWidget(ExamName: 'Mid Term')
+                 MajorExamWidget(ExamName: 'Mid Term'),
+                 MajorExamWidget(ExamName: "Final Exams")
                ],
              ),
            ),

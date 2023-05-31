@@ -74,6 +74,7 @@ flutter:
     - assets/images/icons/attendance-icon.png
     - assets/images/icons/results.png
     - assets/images/icons/notes.png
+    - assets/images/icons/phone-call.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
