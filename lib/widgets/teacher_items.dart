@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 
-class TeacherItem extends StatefulWidget {
+class TeacherItem extends StatelessWidget {
   final String teacherName;
     final String teachingSubject;
     final String teacherImageUrl;
   const TeacherItem({super.key, required this.teacherName, required this.teachingSubject, required this.teacherImageUrl});
 
-  @override
-  State<TeacherItem> createState() => _TeacherItemState();
-}
+  
 
-class _TeacherItemState extends State<TeacherItem> {
   @override
   Widget build(BuildContext context) {
     
@@ -43,7 +40,7 @@ class _TeacherItemState extends State<TeacherItem> {
                 decoration:   BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
                 image:  DecorationImage(
-                image:NetworkImage('https://t3.ftcdn.net/jpg/02/65/18/30/360_F_265183061_NkulfPZgRxbNg3rvYSNGGwi0iD7qbmOp.jpg'),
+                image:AssetImage(teacherImageUrl),
                 fit: BoxFit.cover,
                 
             ),
@@ -55,7 +52,7 @@ class _TeacherItemState extends State<TeacherItem> {
                   //alignment: Alignment.bottomRight,
                   margin: EdgeInsets.only(top: 75,left: 23),
                   
-                  child:  Text(widget.teacherName,style: TextStyle(
+                  child:  Text(teacherName,style: const TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
                     
@@ -66,7 +63,7 @@ class _TeacherItemState extends State<TeacherItem> {
               
               Container(
                 margin: EdgeInsets.only(top: 95,left: 40),
-                child:  Text(widget.teachingSubject,style: TextStyle(
+                child:  Text(teachingSubject,style: TextStyle(
                   fontSize: 17,
                   
                   
