@@ -4,19 +4,22 @@ import 'package:schoolwale/widgets/nav_drawer.dart';
 import 'package:schoolwale/widgets/carousel_slider.dart';
 import 'package:schoolwale/widgets/teachers_widget.dart';
 
+
 class MyHomePage extends StatelessWidget{
   const MyHomePage({super.key});
 
-  @override
+ @override
   Widget build(BuildContext context) {
     const title = 'Schoolwale';
+    
     return Scaffold(
       
       drawer: const NavDrawer(),
       appBar: AppBar(
         title:const Align(
-          alignment: Alignment.centerRight,
+          alignment: Alignment.center,
           child: Text(title),
+
                   //backgroundColor: const Color.fromARGB(0,6,96,198),
         
       ),
@@ -56,7 +59,8 @@ class MyHomePage extends StatelessWidget{
               const TeacherWidget()
             ],
           ),
-            
+          
+      
       
       
       
@@ -117,6 +121,43 @@ class MyHomePage extends StatelessWidget{
         //       ),
         //   ]),
           ),
+
       ));
+      //  bottomNavigationBar: BottomAppBar(
+      //   shape: CircularNotchedRectangle(),
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //     children: [
+      //       IconButton(
+      //         icon: Icon(Icons.home),
+      //         onPressed: () {
+      //           // Home action
+      //         },
+      //       ),
+      //       IconButton(
+      //         icon: Icon(Icons.announcement),
+      //         onPressed: () {
+      //           // Search action
+      //         },
+      //       ),
+      //       SizedBox(),
+      //       IconButton(
+      //         icon: Icon(Icons.menu_book),
+      //         onPressed: () {
+      //           // Settings action
+      //         },
+      //       ),
+      //       IconButton(
+      //         icon: Icon(Icons.person),
+      //         onPressed: () {
+      //           // Notifications action
+      //         },
+      //       ),
+      //     ],
+      //   ),
+      //  );
+    
+  
+      
   }
 }

@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:schoolwale/pages/eventpage.dart';
 import 'package:schoolwale/pages/resultpage.dart';
 import 'package:schoolwale/pages/myTeacher.dart';
 import 'package:schoolwale/pages/rules.dart';
 import 'package:schoolwale/pages/about.dart';
 import 'package:schoolwale/pages/phone.dart';
+import 'package:schoolwale/pages/student_virtualID.dart';
+import 'package:schoolwale/pages/studentnotes.dart';
+import 'package:schoolwale/pages/timetable.dart';
+import 'package:schoolwale/pages/calendar.dart';
 
 
 class NavDrawer extends StatelessWidget {
@@ -28,51 +33,66 @@ class NavDrawer extends StatelessWidget {
                     image: AssetImage('assets/images/schoolPicture.jpg'))),
           ),
           ListTile(
-            leading: const Icon(Icons.input),
+            leading: const Icon(Icons.event_available_outlined),
             title: const Text('Attendance'),
-            onTap: () => {},
+           onTap: () => {Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const EventCalendarScreen()),
+  )}
           ),
           ListTile(
-            leading: const Icon(Icons.verified_user),
+            leading: const Icon(Icons.pending_actions_outlined),
             title: const Text('Timetable'),
-            onTap: () => {},
+            onTap: () => {Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const TimeTable()),
+  )},
           ),
           ListTile(
-            leading: const Icon(Icons.settings),
+            leading: const Icon(Icons.note_add_rounded),
             title: const Text('Notes'),
-            onTap: () => {},
+            onTap: () => {Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const classnotes()),
+  ) },
           ),
           ListTile(
-            leading: const Icon(Icons.border_color),
+            leading: const Icon(Icons.menu_book_outlined),
             title: const Text('Results and Report card'),
             onTap: () => {Navigator.push(
     context,
     MaterialPageRoute(builder: (context) => const ResultPage()),
   )},
           ),ListTile(
-            leading: const Icon(Icons.exit_to_app),
+            leading: const Icon(Icons.celebration_rounded),
             title: const Text('Events'),
-            onTap: () => {},
+            onTap: () => {Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => Eventsupload()),
+  ) },
           ),ListTile(
-            leading: const Icon(Icons.exit_to_app),
+            leading: const Icon(Icons.people_alt_rounded),
             title: const Text('Teachers'),
             onTap: () => {Navigator.push(
     context,
     MaterialPageRoute(builder: (context) => const Teacherstate()),
   )},
           ),ListTile(
-            leading: const Icon(Icons.exit_to_app),
+            leading: const Icon(Icons.assignment_ind_outlined),
             title: const Text('Virtual ID'),
-            onTap: () => {},
+            onTap: () => {Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => Virtualid()),
+  ) },
           ),ListTile(
-            leading: const Icon(Icons.exit_to_app),
+            leading: const Icon(Icons.rule_folder_outlined),
             title: const Text('Rules and Regulations'),
             onTap: () => {Navigator.push(
     context,
     MaterialPageRoute(builder: (context) =>  Myrules()),
   )},
           ),ListTile(
-            leading: const Icon(Icons.exit_to_app),
+            leading: const Icon(Icons.domain),
             title: const Text('About School'),
             onTap: () => {Navigator.push(
     context,
@@ -80,7 +100,7 @@ class NavDrawer extends StatelessWidget {
   )},
           ),
           ListTile(
-            leading: const Icon(Icons.exit_to_app),
+            leading: const Icon(Icons.logout_outlined),
             title: const Text('Logout'),
             onTap: () => {Navigator.push(
     context,
