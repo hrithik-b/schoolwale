@@ -6,6 +6,7 @@ import 'package:schoolwale/widgets/teachers_widget.dart';
 
 
 class MyHomePage extends StatelessWidget{
+  
   const MyHomePage({super.key});
 
  @override
@@ -55,7 +56,7 @@ class MyHomePage extends StatelessWidget{
               //end
       
               const CustomSlider(),
-             const CustomCarouselSlider(),
+              const CustomCarouselSlider(),
               const TeacherWidget()
             ],
           ),

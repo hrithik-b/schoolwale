@@ -80,8 +80,11 @@ flutter:
     - assets/images/icons/results.png
     - assets/images/icons/notes.png
     - assets/images/icons/phone-call.png
-    - assets/images/girl.jpg
+
     
+
+
+    - assets/images/teacher-image.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
