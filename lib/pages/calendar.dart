@@ -41,7 +41,7 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
                     height: 100,
 
                     decoration: BoxDecoration(
-                      color: Colors.lightBlue[300],
+                      color: Colors.lightBlue[200],
                       borderRadius: BorderRadius.circular(50),
                     ),
                   ),
