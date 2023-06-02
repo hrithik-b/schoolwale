@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:schoolwale/pages/resultpage.dart';
+import 'package:schoolwale/pages/myTeacher.dart';
+import 'package:schoolwale/pages/rules.dart';
+import 'package:schoolwale/pages/about.dart';
+import 'package:schoolwale/pages/phone.dart';
+
 
 class NavDrawer extends StatelessWidget {
   const NavDrawer({super.key});
@@ -51,7 +56,10 @@ class NavDrawer extends StatelessWidget {
           ),ListTile(
             leading: const Icon(Icons.exit_to_app),
             title: const Text('Teachers'),
-            onTap: () => {},
+            onTap: () => {Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const Teacherstate()),
+  )},
           ),ListTile(
             leading: const Icon(Icons.exit_to_app),
             title: const Text('Virtual ID'),
@@ -59,16 +67,25 @@ class NavDrawer extends StatelessWidget {
           ),ListTile(
             leading: const Icon(Icons.exit_to_app),
             title: const Text('Rules and Regulations'),
-            onTap: () => {},
+            onTap: () => {Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) =>  Myrules()),
+  )},
           ),ListTile(
             leading: const Icon(Icons.exit_to_app),
             title: const Text('About School'),
-            onTap: () => {},
+            onTap: () => {Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const MyAbout()),
+  )},
           ),
           ListTile(
             leading: const Icon(Icons.exit_to_app),
             title: const Text('Logout'),
-            onTap: () => {},
+            onTap: () => {Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const MyPhone()),
+  )},
           ),
         ],
       ),

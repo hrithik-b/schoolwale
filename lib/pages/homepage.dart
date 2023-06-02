@@ -52,7 +52,7 @@ class MyHomePage extends StatelessWidget{
               //end
       
               const CustomSlider(),
-             // const CustomCarouselSlider(),
+             const CustomCarouselSlider(),
               const TeacherWidget()
             ],
           ),
