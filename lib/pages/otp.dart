@@ -33,6 +33,7 @@ class _MyOtpState extends State<MyOtp> {
     );
 
     return Scaffold(
+      backgroundColor: Colors.white,
       extendBodyBehindAppBar:true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -53,18 +54,10 @@ class _MyOtpState extends State<MyOtp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Stack(
-                children:<Widget>[Text('SCHOOLWALE',style: TextStyle(
-                  fontSize: 40,foreground: Paint()..style=PaintingStyle.stroke
-                  ..strokeWidth=6
-                  ..color=Color(0xff0660C6)!,
-                ),),
-                  Text('SCHOOLWALE',style: TextStyle(fontSize: 40,color: Colors.white),
-                  ),],),
+              const Image(image:AssetImage('assets/images/schoolwale-logo.jpeg') ,width: 250,height: 250,),
               SizedBox(
-                height: 40,
+                height: 0,
               ),
-
               Text('Phone Verification',style: TextStyle(
                   fontSize: 22,fontWeight: FontWeight.bold
               ),),
@@ -96,7 +89,7 @@ class _MyOtpState extends State<MyOtp> {
                 child: ElevatedButton(onPressed : () => {Navigator.push(
     context,
     MaterialPageRoute(builder: (context) => const MyHomePage())),
-  }, child: Text('Varify Phone Number'),style: ElevatedButton.styleFrom(
+  }, child: Text('Verify Phone Number'),style: ElevatedButton.styleFrom(
                     primary: Color(0xff0660C6),shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
                 ),) ,
               )

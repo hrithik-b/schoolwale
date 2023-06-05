@@ -35,13 +35,13 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
               child: Stack(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 20),
+                    margin: EdgeInsets.only(top: 20, left: 20, right: 20),
 
                     // width: double.infinity,
                     height: 100,
 
                     decoration: BoxDecoration(
-                      color: Colors.lightBlue[300],
+                      color: Colors.lightBlue[200],
                       borderRadius: BorderRadius.circular(50),
                     ),
                   ),

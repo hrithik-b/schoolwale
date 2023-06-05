@@ -28,7 +28,7 @@ class _myrules extends State<Myrules> {
           
           child: Container(
             alignment: Alignment.center,
-            width: 350,
+            width:MediaQuery.of(context).size.width-40,
             height: 711,
             decoration: BoxDecoration(
               color: Color.fromRGBO(221, 215, 245, 0.302),

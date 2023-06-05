@@ -55,7 +55,7 @@ class _MyAboutState extends State<MyAbout> {
               ),
                Container(
             alignment: Alignment.center,
-            width:350,
+             width: MediaQuery.of(context).size.width-30,
             height: 350,
             decoration: BoxDecoration(
                color: Color.fromRGBO(221, 215, 245, 0.302),
@@ -86,43 +86,13 @@ class _MyAboutState extends State<MyAbout> {
           SizedBox(
             height: 20,
           ),
-         /* Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-              color: Color.fromRGBO(242, 242, 245, 0.302),
-              ),
-              padding:EdgeInsets.all(12),
-                  height: 370,
-                  width:350,
-                  
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GridView.builder(
-                              itemCount: 4,
-                              itemBuilder: (context, index) {
-                                
-                      return Container(
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0),
-                    image: DecorationImage(
-                              image: AssetImage(values[index]),fit:BoxFit.cover
-                    )),
-                        child: Center(child: 
-                     Image.network(values[index]),),);
-                              },
-                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,crossAxisSpacing: 9,mainAxisSpacing: 9,),
-                              
-                    ),
-                  ),
-                ),
-          ),*/
+         
            SizedBox(
                 height: 2,
               ),
                Container(
             alignment: Alignment.center,
-            width:350,
+            width: MediaQuery.of(context).size.width-30,
             height: 250,
             decoration: BoxDecoration(
                color: Color.fromRGBO(221, 215, 245, 0.302),
@@ -158,11 +128,11 @@ class _MyAboutState extends State<MyAbout> {
    
           ),
           SizedBox(
-            height: 10,
+            height: 20,
           ),
            Container(
             alignment: Alignment.center,
-            width:350,
+             width: MediaQuery.of(context).size.width-30,
             height: 370,
             decoration: BoxDecoration(
                color: Color.fromRGBO(221, 215, 245, 0.302),
@@ -195,9 +165,10 @@ class _MyAboutState extends State<MyAbout> {
               
             
             ),
-   
+  
           ),
-            
+ SizedBox(height: 20),
+       
             ],
 
                ),

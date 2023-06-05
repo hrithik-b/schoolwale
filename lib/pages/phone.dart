@@ -19,27 +19,30 @@ class _MyPhoneState extends State<MyPhone> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+     // backgroundColor: Color(0xff0660C6),
       body:Container(
+        
         margin: EdgeInsets.only(left: 25,right: 25),
         alignment: Alignment.center,
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-            Stack(
+           /* Stack(
               children:<Widget>[Text('SCHOOLWALE',style: TextStyle(
                   fontSize: 40,foreground: Paint()..style=PaintingStyle.stroke
                   ..strokeWidth=6
-                  ..color=Color(0xff0660C6)!,
+                  ..color=Color.fromARGB(255, 242, 243, 244)!,
               ),),
-              Text('SCHOOLWALE',style: TextStyle(fontSize: 40,color: Colors.white),
-              ),],),
+             Text('SCHOOLWALE',style: TextStyle(fontSize: 40,color: Colors.white),
+              ),],),*/
+              const Image(image:AssetImage('assets/images/schoolwale-logo.jpeg') ,width: 250,height: 250,),
               SizedBox(
-                height: 40,
+                height: 0,
               ),
 
               Text('Phone Verification',style: TextStyle(
-                fontSize: 22,fontWeight: FontWeight.bold
+                fontSize: 22,fontWeight: FontWeight.bold,
               ),),
               SizedBox(
                 height: 10,
