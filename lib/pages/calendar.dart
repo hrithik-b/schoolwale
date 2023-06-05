@@ -38,7 +38,8 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
                     margin: EdgeInsets.only(top: 20, left: 20, right: 20),
 
                     // width: double.infinity,
-                    height: 100,
+                    height: (MediaQuery.of(context).size.height)/10*1.5,
+            width: (MediaQuery.of(context).size.width)/10*9,
 
                     decoration: BoxDecoration(
                       color: Colors.lightBlue[200],
@@ -48,8 +49,9 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
                   Container(
                     alignment: Alignment.bottomLeft,
                     padding: EdgeInsets.only(left: 50, top: 40),
+                   
                     height: 100,
-                    width: 100,
+                     width: 100,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(30),
                       child: Image.network(

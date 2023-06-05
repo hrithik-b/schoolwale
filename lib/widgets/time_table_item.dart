@@ -22,8 +22,8 @@ class TimeTableItem extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            height: 100,
-            width: 70,
+            height: (MediaQuery.of(context).size.height)/10*1.4,
+            width: (MediaQuery.of(context).size.width)/10*2,
             // color: Colors.white,
             child: Column(children: [
               Text(
@@ -50,8 +50,8 @@ class TimeTableItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
             ),
             child: Container(
-              height: 100,
-              width: 300,
+             height: (MediaQuery.of(context).size.height)/10*1.4,
+            width: (MediaQuery.of(context).size.width)/10*7.5,
               child: Column(
                 children: [
                   Text(

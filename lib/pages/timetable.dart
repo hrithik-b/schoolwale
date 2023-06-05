@@ -62,6 +62,7 @@ class _TimeTableState extends State<TimeTable> {
           SizedBox(height: 10),
           Container(
             height: MediaQuery.of(context).size.height - 160,
+            
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Column(

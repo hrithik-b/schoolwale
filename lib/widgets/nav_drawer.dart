@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:schoolwale/pages/eventpage.dart';
 import 'package:schoolwale/pages/resultpage.dart';
-import 'package:schoolwale/pages/myTeacher.dart';
+import 'package:schoolwale/pages/teacher.dart';
 import 'package:schoolwale/pages/rules.dart';
 import 'package:schoolwale/pages/about.dart';
 import 'package:schoolwale/pages/phone.dart';
