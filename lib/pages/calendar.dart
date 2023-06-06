@@ -25,7 +25,14 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+         icon:Icon(Icons.arrow_back_ios_new),
+         onPressed: () { 
+          Navigator.pop(context);
+          },
+        ),
         centerTitle: true,
+        backgroundColor: Color(0xff0066C6),
         title: const Text('Attendance'),
       ),
       body: SingleChildScrollView(
@@ -42,7 +49,7 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
             width: (MediaQuery.of(context).size.width)/10*9,
 
                     decoration: BoxDecoration(
-                      color: Colors.lightBlue[200],
+                      color: Color.fromARGB(255, 93, 156, 216),
                       borderRadius: BorderRadius.circular(50),
                     ),
                   ),

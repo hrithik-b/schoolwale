@@ -21,6 +21,7 @@ class _TimeTableState extends State<TimeTable> {
             Navigator.pop(context);
           },
         ),
+         backgroundColor: Color(0xff0066C6),
         title: Text('Timetable'),
         centerTitle: true,
       ),

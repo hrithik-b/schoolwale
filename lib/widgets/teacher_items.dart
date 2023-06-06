@@ -23,7 +23,7 @@ class TeacherItem extends StatelessWidget {
             width: 140,
             height: 180,
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 90, 255, 225)
+              color: Color.fromARGB(255, 146, 138, 162)
             ),
           ),
           Container(

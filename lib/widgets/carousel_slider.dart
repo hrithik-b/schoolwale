@@ -15,7 +15,7 @@ class CustomCarouselSlider extends StatelessWidget {
       padding: EdgeInsets.only(top: 20),
       child:CarouselSlider(
         options: CarouselOptions(
-        height: 400,
+        height: 250,
         aspectRatio: 16/9,
         viewportFraction: 0.8,
         initialPage: 0,
@@ -30,8 +30,10 @@ class CustomCarouselSlider extends StatelessWidget {
         scrollDirection: Axis.horizontal,
          ),
         items: [
-          'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjZijn6WeGyWgc9LL-9NUHgVzDGB-gdA6qSFN5mklFdA6qNHHujO1ef_MGhpIso-K666Y&usqp=CAU'
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjmGR6Cf_43lCZkLAxRSVKXrbtgUYlYAies0DnXsX3g-_VQlDeVelY_gqXyuwvQyBwdnc&usqp=CAU',
+         'https://cdndailyexcelsior.b-cdn.net/wp-content/uploads/2018/11/page10-12.jpg'
+          // 'https://cdndailyexcelsior.b-cdn.net/wp-content/uploads/2019/12/page12-7-2.jpg',
+        //'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1y2sptJ5DQdecXeVc86Xrvv_WrbtbHTFk1A&usqp=CAU'
         ].map((imageUrl) {
           return Builder(
         builder: (BuildContext context) {

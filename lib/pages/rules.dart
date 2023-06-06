@@ -16,6 +16,7 @@ class _myrules extends State<Myrules> {
     MaterialPageRoute(builder: (context) => const MyHomePage()),
   )},icon: Icon(Icons.arrow_back_ios),),
         title: Text(
+          
           "Rules And Regulations",
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
         ),

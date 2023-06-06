@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'homepage.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
@@ -38,21 +37,22 @@ class _MyAboutState extends State<MyAbout> {
         child: Column(
           children: [
             Text(
-              "\t\t\t\t\tSt\nAloysius",
+              "\t\t\t\t\tSt Aloysius",
               style: TextStyle(
                   color: Colors.black87,
                   fontWeight: FontWeight.bold,
                   fontSize: 34),
             ),
             SizedBox(
-              height: 20,
+              height:((MediaQuery.of(context).size.height)/10)*0.3,
             ),
             CircleAvatar(
               backgroundImage: AssetImage('assets/images/schoolPicture.jpg'),
               radius: 120,
             ),
             SizedBox(
-              height: 20,
+              height:((MediaQuery.of(context).size.height)/10)*1,
+              // height: 20,
             ),
             Container(
               alignment: Alignment.center,

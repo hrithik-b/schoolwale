@@ -11,17 +11,19 @@ class MyHomePage extends StatelessWidget{
 
  @override
   Widget build(BuildContext context) {
+    
     const title = 'Schoolwale';
     
     return Scaffold(
       
       drawer: const NavDrawer(),
       appBar: AppBar(
+         backgroundColor: Color(0xff0066C6),
         title:const Align(
+          
           alignment: Alignment.center,
           child: Text(title),
-
-                  //backgroundColor: const Color.fromARGB(0,6,96,198),
+      //color: Colors.blue,
         
       ),
       ),

@@ -9,6 +9,7 @@ class englishnotes extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
+        backgroundColor: Color(0xff0066C6),
         title:Text('English Notes'),
       ),
       body: GridView.count(
@@ -20,8 +21,8 @@ class englishnotes extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Container(
-              height: 200,
-              width: 200,
+              // height: 200,
+              // width: 200,
               alignment: Alignment.center,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -44,8 +45,8 @@ class englishnotes extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Container(
-              height: 200,
-              width: 200,
+              // height: 200,
+              // width: 200,
               alignment: Alignment.center,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -68,8 +69,8 @@ class englishnotes extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Container(
-              height: 200,
-              width: 200,
+              // height: 200,
+              // width: 200,
               alignment: Alignment.center,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -92,8 +93,8 @@ class englishnotes extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Container(
-              height: 200,
-              width: 200,
+              // height: 200,
+              // width: 200,
               alignment: Alignment.center,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -116,8 +117,8 @@ class englishnotes extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Container(
-              height: 200,
-              width: 200,
+              // height: 200,
+              // width: 200,
               alignment: Alignment.center,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -140,8 +141,8 @@ class englishnotes extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Container(
-              height: 200,
-              width: 200,
+              // height: 200,
+              // width: 200,
               alignment: Alignment.center,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

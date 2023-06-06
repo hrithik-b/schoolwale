@@ -25,7 +25,7 @@ class annoucementsUpdate extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                color: Colors.blue,
+                color: Color.fromARGB(255, 0, 101, 184),
               ),
               Text(
               Annoucementname,

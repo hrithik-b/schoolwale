@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
               Navigator.pop(context);
             },
           ),
+           backgroundColor: Color(0xff0066C6),
           title: Text('Student Profile'),
           centerTitle: true,
         ),
@@ -30,6 +31,8 @@ class MyApp extends StatelessWidget {
              child: Card(
            child: Expanded(
              child: Container(
+              // height:((MediaQuery.of(context).size.height)/10)*3,
+              // width:((MediaQuery.of(context).size.width)/10)*7,
                height:700,
                width: 550,
                child: Column(

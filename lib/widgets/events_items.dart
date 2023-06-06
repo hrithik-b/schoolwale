@@ -12,8 +12,10 @@ class EventsItems extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              width:350,
-              height:250,
+              height: ((MediaQuery.of(context).size.height)/10)*3,
+              width: ((MediaQuery.of(context).size.width)/10)*9.5,
+              // width:350,
+              // height:250,
               child: Image.network(
                 eventpictureUrl,
                 fit: BoxFit.cover,

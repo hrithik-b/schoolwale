@@ -11,6 +11,7 @@ class MarksCard extends StatelessWidget {
     return Scaffold(
       
        appBar: AppBar(
+         backgroundColor: Color(0xff0066C6),
          title: Text(""),
        ),
            body: SingleChildScrollView(

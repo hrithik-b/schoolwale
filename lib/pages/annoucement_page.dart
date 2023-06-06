@@ -30,6 +30,7 @@ class annoucement extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
+         backgroundColor: Color(0xff0066C6),
         title: Text('Announcements'),
         centerTitle: true,
         actions: [
