@@ -62,105 +62,45 @@ class MyHomePage extends StatelessWidget{
               const TeacherWidget()
             ],
           ),
-          
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-          //   child: ListView(
-          //     // This next line does the trick.
-          //     scrollDirection: Axis.horizontal,
-          //     children: <Widget>[
-          //       Container(
-          //         width: 160.0,
-          //         color: Colors.red,
-          //       ),
-          //       Container(
-          //         width: 160.0,
-          //         color: Colors.blue,
-          //       ),
-          //       Container(
-          //         width: 160.0,
-          //         color: Colors.green,
-          //       ),
-          //       Container(
-          //         width: 160.0,
-          //         color: Colors.yellow,
-          //       ),
-          //       Container(
-          //         width: 160.0,
-          //         color: Colors.orange,
-          //       ),
-          //     ],
-          //   ),
-          // ),
-        
-        // bottomNavigationBar: BottomNavigationBar(
-        //   items: const [
-        //     BottomNavigationBarItem(
-        //       icon: Icon(Icons.home),
-        //       label: "Home"
-      
-        //       ),
-        //       BottomNavigationBarItem(
-        //       icon: Icon(Icons.announcement),
-        //       label: "Announcments"
-      
-        //       ),BottomNavigationBarItem(
-        //       icon: Icon(Icons.book),
-        //       label: "Result"
-      
-        //       ),BottomNavigationBarItem(
-        //       icon: Icon(Icons.account_box_rounded),
-        //       label: "Profile"
-      
-        //       ),
-        //   ]),
           ),
-
-      ));
-      //  bottomNavigationBar: BottomAppBar(
-      //   shape: CircularNotchedRectangle(),
-      //   child: Row(
-      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      //     children: [
-      //       IconButton(
-      //         icon: Icon(Icons.home),
-      //         onPressed: () {
-      //           // Home action
-      //         },
-      //       ),
-      //       IconButton(
-      //         icon: Icon(Icons.announcement),
-      //         onPressed: () {
-      //           // Search action
-      //         },
-      //       ),
-      //       SizedBox(),
-      //       IconButton(
-      //         icon: Icon(Icons.menu_book),
-      //         onPressed: () {
-      //           // Settings action
-      //         },
-      //       ),
-      //       IconButton(
-      //         icon: Icon(Icons.person),
-      //         onPressed: () {
-      //           // Notifications action
-      //         },
-      //       ),
-      //     ],
-      //   ),
-      //  );
-    
-  
-      
+          
+  ),
+   bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            IconButton(
+              
+              icon: Icon(Icons.home),
+              onPressed: () {
+                
+              },
+            ),
+         IconButton(
+              icon: Icon(Icons.campaign_sharp),
+              onPressed: () {
+                // Home action
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.menu_book_sharp),
+              onPressed: () {
+                // Home action
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.person),
+              onPressed: () {
+                // Home action
+              },
+            ),
+        ],
+      //  currentIndex:0,
+      //  selectedItemColor:Colors.blue,
+        ),
+   ),
+    );
+        }
+       
   }
-}

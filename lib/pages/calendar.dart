@@ -49,6 +49,14 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
             width: (MediaQuery.of(context).size.width)/10*9,
 
                     decoration: BoxDecoration(
+                      boxShadow: [
+                      BoxShadow(
+                        color: Color(0xffDDDDDD),
+                        blurRadius: 6.0,
+                        spreadRadius: 6.0,
+                        offset: Offset(0.0, 0.0),
+                      )
+                    ],
                       color: Color.fromARGB(255, 93, 156, 216),
                       borderRadius: BorderRadius.circular(50),
                     ),

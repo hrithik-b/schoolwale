@@ -55,6 +55,7 @@ class classnotes extends StatelessWidget {
         centerTitle: true,
       ),
       body: Container(
+        
         padding: EdgeInsets.all(20),
         child: GridView.count(
           crossAxisCount: 2,

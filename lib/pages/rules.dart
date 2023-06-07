@@ -34,6 +34,15 @@ class _myrules extends State<Myrules> {
             decoration: BoxDecoration(
               color: Color.fromRGBO(221, 215, 245, 0.302),
               borderRadius: BorderRadius.circular(30),
+             
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0xffDDDDDD),
+                        blurRadius: 6.0,
+                        spreadRadius: 6.0,
+                        offset: Offset(0.0, 0.0),
+                      )
+                    ],
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,

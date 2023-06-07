@@ -22,6 +22,7 @@ class TimeTableItem extends StatelessWidget {
       child: Row(
         children: [
           Container(
+             
             height: (MediaQuery.of(context).size.height)/10*1.4,
             width: (MediaQuery.of(context).size.width)/10*2,
             // color: Colors.white,
@@ -45,8 +46,10 @@ class TimeTableItem extends StatelessWidget {
           Card(
             // margin: EdgeInsets.only(top: 20),
             elevation: 8,
+            
             color: Colors.lightBlue[100],
             shape: RoundedRectangleBorder(
+
               borderRadius: BorderRadius.circular(20),
             ),
             child: Container(

@@ -17,6 +17,7 @@ class annoucementsUpdate extends StatelessWidget {
         ),
         color: Colors.lightBlue[50],
         child: Container(
+          
           height: 150,
           width: 200,
           alignment: Alignment.center,
