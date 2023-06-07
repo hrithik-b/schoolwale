@@ -42,8 +42,8 @@ class StackBuilder extends StatelessWidget {
                         color: Color.fromARGB(255, 75, 69, 69)),
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     color: containerclr),
-                height: MediaQuery.of(context).size.height - 480,
-                width: MediaQuery.of(context).size.width - 230,
+                height: MediaQuery.of(context).size.height - 540,
+                width: MediaQuery.of(context).size.width - 205,
                 child: Column(
                   children: [
                     SizedBox(
@@ -112,7 +112,7 @@ class StackBuilder extends StatelessWidget {
             ),
             child: CircleAvatar(
               radius: 51,
-              backgroundColor: Color.fromARGB(255, 75, 69, 69),
+              backgroundColor: Color.fromARGB(255, 220, 166, 166),
               child: CircleAvatar(
                 backgroundImage:
                     NetworkImage(/*'assets/images/ty.jpg'*/ imgurl),

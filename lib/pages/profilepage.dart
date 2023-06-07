@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 
 void main() {
-  runApp(MyApp());
+  runApp(Myprofile());
 }
 
-class MyApp extends StatelessWidget {
+class Myprofile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

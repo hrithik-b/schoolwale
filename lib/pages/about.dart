@@ -124,7 +124,7 @@ class _MyAboutState extends State<MyAbout> {
 
              ContainerWidget(
              cwidth:(MediaQuery.of(context).size.width)/10*9,
-              cheight:((MediaQuery.of(context).size.height)/10)*5.3,
+              cheight:((MediaQuery.of(context).size.height)/10)*5.7,
               heading:  "Achievements",
               content: "Our school takes pride in its outstanding academic achievements, consistently surpassing national standards and earning recognition for excellence in various subject areas. We have a strong track record of preparing students for higher education, with a high percentage of graduates being accepted into top-tier universities. Additionally, our school has received accolades for its inclusive and diverse community, fostering a supportive environment where every student can thrive.",
             ),

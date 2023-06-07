@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:schoolwale/pages/annoucement_page.dart';
+import 'package:schoolwale/pages/profilepage.dart';
+import 'package:schoolwale/pages/resultpage.dart';
 import 'package:schoolwale/widgets/slider.dart';
 import 'package:schoolwale/widgets/nav_drawer.dart';
 import 'package:schoolwale/widgets/carousel_slider.dart';
@@ -49,10 +52,13 @@ class MyHomePage extends StatelessWidget{
                 
                 child: const Padding(
                   padding: EdgeInsets.only(top:30,left: 20),
-                  child: Text('Hello \nChintu', style: TextStyle(
-                    fontSize: 40,
+                  child: Text('Hello Chintu',  textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color:Colors.white70,
+                    fontSize: 30,
                     fontWeight: FontWeight.bold
-                  ),),
+                  ),
+                  ),
                 ),
               ),
               //end
@@ -71,28 +77,41 @@ class MyHomePage extends StatelessWidget{
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             IconButton(
-              
               icon: Icon(Icons.home),
               onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  MyHomePage()),
+                );
                 
               },
             ),
          IconButton(
               icon: Icon(Icons.campaign_sharp),
               onPressed: () {
-                // Home action
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  annoucement()),
+                );
               },
             ),
             IconButton(
               icon: Icon(Icons.menu_book_sharp),
               onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ResultPage()),
+                );
                 // Home action
               },
             ),
             IconButton(
               icon: Icon(Icons.person),
               onPressed: () {
-                // Home action
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Myprofile()),
+                );
               },
             ),
         ],

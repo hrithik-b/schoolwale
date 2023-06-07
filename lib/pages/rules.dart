@@ -30,7 +30,8 @@ class _myrules extends State<Myrules> {
           child: Container(
             alignment: Alignment.center,
             width:MediaQuery.of(context).size.width-40,
-            height: 711,
+            height: (MediaQuery.of(context).size.height)/10*10,
+            // height: 711,
             decoration: BoxDecoration(
               color: Color.fromRGBO(221, 215, 245, 0.302),
               borderRadius: BorderRadius.circular(30),

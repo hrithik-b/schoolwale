@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:schoolwale/pages/teacher.dart';
 import 'package:schoolwale/widgets/teacher_items.dart';
 
 class TeacherWidget extends StatelessWidget {
@@ -21,10 +22,23 @@ class TeacherWidget extends StatelessWidget {
             ),),
           ),
           Container(
-            margin: const EdgeInsets.only(left: 240,bottom: 20),
-            child: const Text("See All", style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),),
+            margin: const EdgeInsets.only(left: 210,bottom: 20),
+              child: GestureDetector(
+                child: Text("See All" ,style: TextStyle(
+               fontWeight: FontWeight.bold,
+               ),),
+
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Teacherstate()),
+                  );
+                },
+              )
+            // child: const Text("See All", style: TextStyle(
+            //   fontWeight: FontWeight.bold,
+            // ),),
+
           ),
 
         

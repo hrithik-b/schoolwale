@@ -45,7 +45,7 @@ class _Virtualid extends State<Virtualid> {
       children: [
         Container(
            height:((MediaQuery.of(context).size.height)/10)*7,
-           width:((MediaQuery.of(context).size.width)/10)*7,
+           width:((MediaQuery.of(context).size.width)/10)*10,
          // width:350,
         // height:550,
         child: Image.network(
