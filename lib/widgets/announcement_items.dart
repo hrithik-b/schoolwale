@@ -17,6 +17,7 @@ class annoucementsUpdate extends StatelessWidget {
         ),
         color: Colors.lightBlue[50],
         child: Container(
+          
           height: 150,
           width: 200,
           alignment: Alignment.center,
@@ -25,7 +26,7 @@ class annoucementsUpdate extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                color: Colors.blue,
+                color: Color.fromARGB(255, 0, 101, 184),
               ),
               Text(
               Annoucementname,

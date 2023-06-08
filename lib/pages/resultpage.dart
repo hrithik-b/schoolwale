@@ -1,39 +1,5 @@
-// import 'package:flutter/material.dart';
-
-// import 'package:schoolwale/widgets/result_widgets/mid_final_exam.dart';
-
-// import '../widgets/result_widgets/classtest_internal_widget.dart';
-
-// class ResultPage extends StatelessWidget {
-//   const ResultPage({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return  Scaffold(
-      
-//        appBar: AppBar(
-//          title: Text("Results"),
-//        ),
-//            body: SingleChildScrollView(
-             
-//              scrollDirection: Axis.vertical,
-//              child: Column(
-//                mainAxisAlignment: MainAxisAlignment.center,
-//                children: const [
-//                  TestMarksWidget(testNameMain: 'Class Tests',testNameSub1:'FA 1',testNameSub2:'FA 2' ,),
-//                  TestMarksWidget(testNameMain: 'Internal Exams',testNameSub1:'Internal 1',testNameSub2:'Internal 2' ,),
-//                  MajorExamWidget(ExamName: 'Mid Term'),
-//                  MajorExamWidget(ExamName: "Final Exams")
-//                ],
-//              ),
-//            ),
-//     );
-//   }}
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:schoolwale/Models/marks_converter.dart';
-
-import 'package:schoolwale/widgets/result_widgets/mid_final_exam.dart';
 
 import '../widgets/result_widgets/classtest_internal_widget.dart';
 
@@ -57,7 +23,7 @@ class ResultPage extends StatelessWidget {
               return Text("Loading");
             }
             final data = snapshot.data!.data();
-            final exams = (data?['Completed_exams'])as List;
+            final exams = (data?['Completed_exams']) as List;
             //print(exams);
             return ResultPageContent(
               exams_data: exams,
@@ -97,4 +63,3 @@ class ResultPageContent extends StatelessWidget {
     );
   }
 }
-

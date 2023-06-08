@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner:false,
       title: 'Notes',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+          primarySwatch: Colors.indigo,
       ),
       home: classnotes(),
     );
@@ -50,10 +50,12 @@ class classnotes extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
+        backgroundColor: Color(0xff0066C6),
         title: Text('Notes'),
         centerTitle: true,
       ),
       body: Container(
+        
         padding: EdgeInsets.all(20),
         child: GridView.count(
           crossAxisCount: 2,
@@ -112,39 +114,39 @@ class classnotes extends StatelessWidget {
           }),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-              icon: Icon(Icons.home),
-              onPressed: () {
-                // Home action
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.announcement),
-              onPressed: () {
-                // Search action
-              },
-            ),
-            SizedBox(),
-            IconButton(
-              icon: Icon(Icons.menu_book),
-              onPressed: () {
-                // Settings action
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.person),
-              onPressed: () {
-                // Notifications action
-              },
-            ),
-          ],
-        ),
-      ),
+      // bottomNavigationBar: BottomAppBar(
+      //   shape: CircularNotchedRectangle(),
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //     children: [
+      //       IconButton(
+      //         icon: Icon(Icons.home),
+      //         onPressed: () {
+      //           // Home action
+      //         },
+      //       ),
+      //       IconButton(
+      //         icon: Icon(Icons.announcement),
+      //         onPressed: () {
+      //           // Search action
+      //         },
+      //       ),
+      //       SizedBox(),
+      //       IconButton(
+      //         icon: Icon(Icons.menu_book),
+      //         onPressed: () {
+      //           // Settings action
+      //         },
+      //       ),
+      //       IconButton(
+      //         icon: Icon(Icons.person),
+      //         onPressed: () {
+      //           // Notifications action
+      //         },
+      //       ),
+      //     ],
+      //   ),
+      // ),
     );
   }
 

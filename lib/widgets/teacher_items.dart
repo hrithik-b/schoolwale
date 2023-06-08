@@ -12,6 +12,7 @@ class TeacherItem extends StatelessWidget {
   Widget build(BuildContext context) {
     
     return Container(
+      
       //alignment: Alignment.center,
       margin: EdgeInsets.only(right: 20),
       child: Stack(
@@ -19,22 +20,31 @@ class TeacherItem extends StatelessWidget {
         children: [
           
           Container(
-            
             width: 140,
             height: 180,
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 90, 255, 225)
+               border: Border.all(
+                        //width: 2,
+                        color: Color.fromARGB(255, 179, 191, 241)),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+              color: Color.fromARGB(255, 179, 191, 241)
+              
             ),
           ),
           Container(
+
             width: 140,
             height: 30,
             decoration: BoxDecoration(
+
+
               color: Color.fromARGB(255, 255, 255, 255)
+
             ),
           ),
           Container(
             margin: EdgeInsets.only(top: 5,left: 40),
+
                 width: 60,
                 height: 60,
                 decoration:   BoxDecoration(
@@ -51,7 +61,10 @@ class TeacherItem extends StatelessWidget {
                   
                   //alignment: Alignment.bottomRight,
                   margin: EdgeInsets.only(top: 75,left: 23),
-                  
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+
                   child:  Text(teacherName,style: const TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,

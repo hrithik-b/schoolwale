@@ -36,6 +36,7 @@ class _EventsuploadState extends State<Eventsupload> {
             Navigator.pop(context);
           },
         ),
+         backgroundColor: Color(0xff0066C6),
         title: Text('Events'),
         centerTitle: true,
 

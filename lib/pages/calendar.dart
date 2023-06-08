@@ -25,7 +25,14 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+         icon:Icon(Icons.arrow_back_ios_new),
+         onPressed: () { 
+          Navigator.pop(context);
+          },
+        ),
         centerTitle: true,
+        backgroundColor: Color(0xff0066C6),
         title: const Text('Attendance'),
       ),
       body: SingleChildScrollView(
@@ -39,19 +46,29 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
 
                     // width: double.infinity,
                     height: (MediaQuery.of(context).size.height)/10*1.5,
-            width: (MediaQuery.of(context).size.width)/10*9,
+                     width: (MediaQuery.of(context).size.width)/10*10,
 
                     decoration: BoxDecoration(
-                      color: Colors.lightBlue[200],
+                      boxShadow: [
+                      BoxShadow(
+                        color: Color(0xffDDDDDD),
+                        blurRadius: 6.0,
+                        spreadRadius: 6.0,
+                        offset: Offset(0.0, 0.0),
+                      )
+                    ],
+                      color: Color.fromARGB(255, 93, 156, 216),
                       borderRadius: BorderRadius.circular(50),
                     ),
                   ),
                   Container(
                     alignment: Alignment.bottomLeft,
                     padding: EdgeInsets.only(left: 50, top: 40),
-                   
-                    height: 100,
-                     width: 100,
+
+                    height: (MediaQuery.of(context).size.height)/10*1.5,
+                    width: (MediaQuery.of(context).size.width)/10*8,
+                    // height: 100,
+                    //  width: 100,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(30),
                       child: Image.network(
@@ -79,7 +96,7 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
                   ),
                   Container(
                     alignment: Alignment.bottomLeft,
-                    padding: EdgeInsets.only(left: 300, top: 40),
+                    padding: EdgeInsets.only(left: 250, top: 40),
                     child: CircularPercentIndicator(
                       radius: 30.0,
                       lineWidth: 8.0,

@@ -1,8 +1,8 @@
 import 'dart:ui';
-
 import 'homepage.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:schoolwale/widgets/aboutContainer.dart';
 
 class MyAbout extends StatefulWidget {
   const MyAbout({super.key});
@@ -38,27 +38,52 @@ class _MyAboutState extends State<MyAbout> {
         child: Column(
           children: [
             Text(
-              "\t\t\t\t\tSt\nAloysius",
+              "\t\t\t\t\tSt Aloysius",
               style: TextStyle(
                   color: Colors.black87,
                   fontWeight: FontWeight.bold,
                   fontSize: 34),
             ),
             SizedBox(
-              height: 20,
+              height:((MediaQuery.of(context).size.height)/10)*0.3,
             ),
-            CircleAvatar(
-              backgroundImage: AssetImage('assets/images/schoolPicture.jpg'),
-              radius: 120,
+            Container(
+              decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: Color.fromRGBO(218, 201, 201, 1),
+                  blurRadius: 6.0,
+                  spreadRadius: 6.0,
+                  offset: Offset(0.0, 0.0),
+                )
+              ],
+            ),
+              
+              child: CircleAvatar(
+                backgroundImage: AssetImage('assets/images/schoolPicture.jpg'),
+                radius: 120,
+              ),
             ),
             SizedBox(
-              height: 20,
+             // height:((MediaQuery.of(context).size.height)/10)*1,
+             height:20,
+              // height: 20,
             ),
             Container(
               alignment: Alignment.center,
               width:(MediaQuery.of(context).size.width)/10*9,
-              height: (MediaQuery.of(context).size.height)/10*5,
+              height: (MediaQuery.of(context).size.height)/10*4.7,
               decoration: BoxDecoration(
+                boxShadow: [
+                BoxShadow(
+                  color: Color.fromRGBO(218, 201, 201, 1),
+                  blurRadius: 6.0,
+                  spreadRadius: 6.0,
+                  offset: Offset(0.0, 0.0),
+                )
+              ],
                 color: Color.fromRGBO(221, 215, 245, 0.302),
                 borderRadius: BorderRadius.circular(30),
               ),
@@ -86,86 +111,29 @@ class _MyAboutState extends State<MyAbout> {
             SizedBox(
               height: 2,
             ),
-            Container(
-              alignment: Alignment.center,
-              width: 350,
-              height: 250,
-              decoration: BoxDecoration(
-                color: Color.fromRGBO(221, 215, 245, 0.302),
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      "Our Mission",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        wordSpacing: 3,
-                        letterSpacing: 1,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Text(
-                        "Our mission is to provide a nurturing and inclusive learning environment where students can thrive academically, socially, and emotionally. We aim to inspire a love for learning, cultivate critical thinking skills, and foster a strong sense of character and community.",
-                        style: TextStyle(
-                          fontSize: 18,
-                          wordSpacing: 3,
-                          letterSpacing: 1,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+            ContainerWidget(
+              cwidth:(MediaQuery.of(context).size.width)/10*9 ,
+              cheight:((MediaQuery.of(context).size.height)/10)*3.4,
+              heading: "Our Mission",
+              content: "Our mission is to provide a nurturing and inclusive learning environment where students can thrive academically, socially, and emotionally. We aim to inspire a love for learning, cultivate critical thinking skills, and foster a strong sense of character and community.",
             ),
+
             SizedBox(
-              height: 10,
+              height: 20,
             ),
-            Container(
-              alignment: Alignment.center,
-              width: 350,
-              height: 370,
-              decoration: BoxDecoration(
-                color: Color.fromRGBO(221, 215, 245, 0.302),
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Achievements",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        wordSpacing: 3,
-                        letterSpacing: 1,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "Our school takes pride in its outstanding academic achievements, consistently surpassing national standards and earning recognition for excellence in various subject areas. We have a strong track record of preparing students for higher education, with a high percentage of graduates being accepted into top-tier universities. Additionally, our school has received accolades for its inclusive and diverse community, fostering a supportive environment where every student can thrive.",
-                        style: TextStyle(
-                          fontSize: 18,
-                          wordSpacing: 3,
-                          letterSpacing: 1,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+
+             ContainerWidget(
+             cwidth:(MediaQuery.of(context).size.width)/10*9,
+              cheight:((MediaQuery.of(context).size.height)/10)*5.7,
+              heading:  "Achievements",
+              content: "Our school takes pride in its outstanding academic achievements, consistently surpassing national standards and earning recognition for excellence in various subject areas. We have a strong track record of preparing students for higher education, with a high percentage of graduates being accepted into top-tier universities. Additionally, our school has received accolades for its inclusive and diverse community, fostering a supportive environment where every student can thrive.",
+            ),
+
+            
+             SizedBox(
+             // height:((MediaQuery.of(context).size.height)/10)*1,
+             height:20,
+              // height: 20,
             ),
           ],
         ),

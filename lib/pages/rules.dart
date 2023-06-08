@@ -16,6 +16,7 @@ class _myrules extends State<Myrules> {
     MaterialPageRoute(builder: (context) => const MyHomePage()),
   )},icon: Icon(Icons.arrow_back_ios),),
         title: Text(
+          
           "Rules And Regulations",
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
         ),
@@ -29,10 +30,20 @@ class _myrules extends State<Myrules> {
           child: Container(
             alignment: Alignment.center,
             width:MediaQuery.of(context).size.width-40,
-            height: 711,
+            height: (MediaQuery.of(context).size.height)/10*10,
+            // height: 711,
             decoration: BoxDecoration(
               color: Color.fromRGBO(221, 215, 245, 0.302),
               borderRadius: BorderRadius.circular(30),
+             
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0xffDDDDDD),
+                        blurRadius: 6.0,
+                        spreadRadius: 6.0,
+                        offset: Offset(0.0, 0.0),
+                      )
+                    ],
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,

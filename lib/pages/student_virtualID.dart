@@ -33,6 +33,7 @@ class _Virtualid extends State<Virtualid> {
             Navigator.pop(context);
           },
         ),
+         backgroundColor: Color(0xff0066C6),
         title: Text('Virtual Id Card'),
         centerTitle: true,
 
@@ -43,8 +44,10 @@ class _Virtualid extends State<Virtualid> {
       child: Column(
       children: [
         Container(
-        width:350,
-        height:550,
+           height:((MediaQuery.of(context).size.height)/10)*7,
+           width:((MediaQuery.of(context).size.width)/10)*10,
+         // width:350,
+        // height:550,
         child: Image.network(
             'https://5.imimg.com/data5/SELLER/Default/2020/12/NS/OM/XG/3502351/school-id-card-500x500.jpg',
           fit: BoxFit.cover,
