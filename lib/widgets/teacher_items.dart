@@ -26,7 +26,7 @@ class TeacherItem extends StatelessWidget {
                border: Border.all(
                         //width: 2,
                         color: Color.fromARGB(255, 179, 191, 241)),
-                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
               color: Color.fromARGB(255, 179, 191, 241)
               
             ),
@@ -38,15 +38,17 @@ class TeacherItem extends StatelessWidget {
             decoration: BoxDecoration(
 
 
-              color: Color.fromARGB(255, 179, 191, 241)
+              color: Color.fromARGB(255, 255, 255, 255)
+
             ),
           ),
           Container(
             margin: EdgeInsets.only(top: 5,left: 40),
+
                 width: 60,
                 height: 60,
                 decoration:   BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
+                  borderRadius: BorderRadius.circular(30),
                 image:  DecorationImage(
                 image:AssetImage(teacherImageUrl),
                 fit: BoxFit.cover,
@@ -59,7 +61,10 @@ class TeacherItem extends StatelessWidget {
                   
                   //alignment: Alignment.bottomRight,
                   margin: EdgeInsets.only(top: 75,left: 23),
-                  
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+
                   child:  Text(teacherName,style: const TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,

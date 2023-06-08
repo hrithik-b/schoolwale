@@ -33,7 +33,8 @@ class NavDrawer extends StatelessWidget {
                     image: AssetImage('assets/images/schoolPicture.jpg'))),
           ),
           ListTile(
-            leading: const Icon(Icons.event_available_outlined),
+            leading: const Icon(Icons.event_available_outlined,color:Colors.indigo),
+
             title: const Text('Attendance'),
            onTap: () => {Navigator.push(
     context,
@@ -41,7 +42,7 @@ class NavDrawer extends StatelessWidget {
   )}
           ),
           ListTile(
-            leading: const Icon(Icons.pending_actions_outlined),
+            leading: const Icon(Icons.pending_actions_outlined,color:Colors.indigo),
             title: const Text('Timetable'),
             onTap: () => {Navigator.push(
     context,
@@ -49,7 +50,7 @@ class NavDrawer extends StatelessWidget {
   )},
           ),
           ListTile(
-            leading: const Icon(Icons.note_add_rounded),
+            leading: const Icon(Icons.note_add_rounded,color:Colors.indigo),
             title: const Text('Notes'),
             onTap: () => {Navigator.push(
     context,
@@ -57,42 +58,42 @@ class NavDrawer extends StatelessWidget {
   ) },
           ),
           ListTile(
-            leading: const Icon(Icons.menu_book_outlined),
+            leading: const Icon(Icons.menu_book_outlined,color:Colors.indigo),
             title: const Text('Results and Report card'),
             onTap: () => {Navigator.push(
     context,
     MaterialPageRoute(builder: (context) => const ResultPage()),
   )},
           ),ListTile(
-            leading: const Icon(Icons.celebration_rounded),
+            leading: const Icon(Icons.celebration_rounded,color:Colors.indigo),
             title: const Text('Events'),
             onTap: () => {Navigator.push(
     context,
     MaterialPageRoute(builder: (context) => Eventsupload()),
   ) },
           ),ListTile(
-            leading: const Icon(Icons.people_alt_rounded),
+            leading: const Icon(Icons.people_alt_rounded,color:Colors.indigo),
             title: const Text('Teachers'),
             onTap: () => {Navigator.push(
     context,
     MaterialPageRoute(builder: (context) => const Teacherstate()),
   )},
           ),ListTile(
-            leading: const Icon(Icons.assignment_ind_outlined),
+            leading: const Icon(Icons.assignment_ind_outlined,color:Colors.indigo),
             title: const Text('Virtual ID'),
             onTap: () => {Navigator.push(
     context,
     MaterialPageRoute(builder: (context) => Virtualid()),
   ) },
           ),ListTile(
-            leading: const Icon(Icons.rule_folder_outlined),
+            leading: const Icon(Icons.rule_folder_outlined,color:Colors.indigo),
             title: const Text('Rules and Regulations'),
             onTap: () => {Navigator.push(
     context,
     MaterialPageRoute(builder: (context) =>  Myrules()),
   )},
           ),ListTile(
-            leading: const Icon(Icons.domain),
+            leading: const Icon(Icons.domain,color:Colors.indigo),
             title: const Text('About School'),
             onTap: () => {Navigator.push(
     context,
@@ -100,7 +101,7 @@ class NavDrawer extends StatelessWidget {
   )},
           ),
           ListTile(
-            leading: const Icon(Icons.logout_outlined),
+            leading: const Icon(Icons.logout_outlined,color:Colors.indigo),
             title: const Text('Logout'),
             onTap: () => {Navigator.push(
     context,
