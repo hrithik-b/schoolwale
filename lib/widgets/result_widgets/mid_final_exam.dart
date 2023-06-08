@@ -39,20 +39,20 @@ class MajorExamWidget extends StatelessWidget {
               margin: EdgeInsets.only(top: 70,left: 15),
             width: 100,
             height: 40,
-            child: ElevatedButton(
-                  onPressed: () {
-                     Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MarksCard()),
-                  );
-                  },
+          //  child: ElevatedButton(
+          //         onPressed: () {
+          //            Navigator.push(
+          //           context,
+          //           MaterialPageRoute(builder: (context) => const MarksCard()),
+          //          );
+          //         },
                   
-                  style: ElevatedButton.styleFrom(
-                      elevation: 12.0,
-                      textStyle: const TextStyle(color: Colors.white)),
-                  child:  Text(ExamName),
+          //         style: ElevatedButton.styleFrom(
+          //             elevation: 12.0,
+          //             textStyle: const TextStyle(color: Colors.white)),
+          //         child:  Text(ExamName),
                   
-                ),
+          //       ),
             
           ),
           
