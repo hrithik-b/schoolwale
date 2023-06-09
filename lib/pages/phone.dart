@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'otp.dart';
 
 class MyPhone extends StatefulWidget {
   const MyPhone({Key? key}) : super(key: key);
+
+  static String verify="";
 
   @override
   State<MyPhone> createState() => _MyPhoneState();
@@ -10,6 +13,7 @@ class MyPhone extends StatefulWidget {
 
 class _MyPhoneState extends State<MyPhone> {
   TextEditingController countrycode=TextEditingController();
+  var phone="";
   @override
   void initState() {
     // TODO: implement initState
@@ -18,6 +22,7 @@ class _MyPhoneState extends State<MyPhone> {
   }
   @override
   Widget build(BuildContext context) {
+    final auth = FirebaseAuth.instance;
     return Scaffold(
      // backgroundColor: Color(0xff0660C6),
       body:Container(
@@ -84,6 +89,10 @@ class _MyPhoneState extends State<MyPhone> {
                     Expanded(
                       child: TextField(
                         keyboardType: TextInputType.phone,
+                        onChanged: (value){
+                          phone=value;
+                      },
+
                         decoration: InputDecoration(
                             border: InputBorder.none,hintText: "Phone"
                         ),
@@ -101,9 +110,30 @@ class _MyPhoneState extends State<MyPhone> {
              SizedBox(
                height: 45,
                width:300,
-               child: ElevatedButton(onPressed: (){
-                 Navigator.push(context,MaterialPageRoute(builder: (context)=>MyOtp()));
+               child: ElevatedButton(onPressed: () async{
+                 await auth.verifyPhoneNumber(
+                   phoneNumber:'+91 95916 19204',
+                   verificationCompleted:  (PhoneAuthCredential credential) async {
+                     // ANDROID ONLY!
 
+                     // Sign the user in (or link) with the auto-generated credential
+                     await auth.signInWithCredential(credential);
+                   },
+                   verificationFailed: (FirebaseAuthException e) {
+                       if (e.code == 'invalid-phone-number') {
+                         print('The provided phone number is not valid.');
+                       }
+
+                       // Handle other errors
+
+                   },
+                   codeSent: (String verificationId, int? resendToken) {
+                     MyPhone.verify=verificationId;
+                     Navigator.push(context,MaterialPageRoute(builder: (context)=>MyOtp()));
+                   },
+                   timeout: const Duration(seconds: 60),
+                   codeAutoRetrievalTimeout: (String verificationId) {},
+                 );
                }, child: Text('Send the Code'),style: ElevatedButton.styleFrom(
                    primary: Color(0xff0660C6),shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
                ),) ,
