@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class TimeTableItem extends StatelessWidget {
   final String timetext1;
@@ -22,9 +21,8 @@ class TimeTableItem extends StatelessWidget {
       child: Row(
         children: [
           Container(
-             
-            height: (MediaQuery.of(context).size.height)/10*1.4,
-            width: (MediaQuery.of(context).size.width)/10*2,
+            height: (MediaQuery.of(context).size.height) / 10 * 1.4,
+            width: (MediaQuery.of(context).size.width) / 10 * 2,
             // color: Colors.white,
             child: Column(children: [
               Text(
@@ -46,15 +44,14 @@ class TimeTableItem extends StatelessWidget {
           Card(
             // margin: EdgeInsets.only(top: 20),
             elevation: 8,
-            
+
             color: Colors.lightBlue[100],
             shape: RoundedRectangleBorder(
-
               borderRadius: BorderRadius.circular(20),
             ),
             child: Container(
-             height: (MediaQuery.of(context).size.height)/10*1.4,
-            width: (MediaQuery.of(context).size.width)/10*7.5,
+              height: (MediaQuery.of(context).size.height) / 10 * 1.4,
+              width: (MediaQuery.of(context).size.width) / 10 * 7.5,
               child: Column(
                 children: [
                   Text(

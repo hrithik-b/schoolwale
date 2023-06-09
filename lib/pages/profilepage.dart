@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:schoolwale/pages/resultpage.dart';
+
+import 'annoucement_page.dart';
+import 'homepage.dart';
 
 
 void main() {
-  runApp(MyApp());
+  runApp(Myprofile());
 }
 
-class MyApp extends StatelessWidget {
+class Myprofile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -119,7 +123,66 @@ class MyApp extends StatelessWidget {
       ),
       )
       )
-      )
+      ),
+          bottomNavigationBar: BottomAppBar(
+
+          shape: CircularNotchedRectangle(),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+        children: [
+
+          IconButton(
+
+            icon: Icon(Icons.home_outlined,
+              size: 30.0,
+              color: Colors.blue[700]!,
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) =>  MyHomePage()),
+
+              );
+            },
+
+
+          ),
+          IconButton(
+            icon: Icon(Icons.campaign_outlined,size: 30.0,color:Colors.blue[700]!),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) =>  annoucement()),
+              );
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.menu_book_outlined,size: 30.0,color: Colors.blue[700]!),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ResultPage()),
+              );
+              // Home action
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.person_outline,size: 30.0,color: Colors.blue[700]!),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Myprofile()),
+              );
+            },
+          ),
+          // selectedItemColor: Colors.blue,
+          // unselectedItemColor: Colors.grey,
+        ],
+        //  currentIndex:0,
+        //  selectedItemColor:Colors.blue,
+      ),
+    ),
       )
     );
 

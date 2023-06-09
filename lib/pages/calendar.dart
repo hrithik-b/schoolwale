@@ -46,7 +46,7 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
 
                     // width: double.infinity,
                     height: (MediaQuery.of(context).size.height)/10*1.5,
-            width: (MediaQuery.of(context).size.width)/10*9,
+                     width: (MediaQuery.of(context).size.width)/10*10,
 
                     decoration: BoxDecoration(
                       boxShadow: [
@@ -64,9 +64,11 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
                   Container(
                     alignment: Alignment.bottomLeft,
                     padding: EdgeInsets.only(left: 50, top: 40),
-                   
-                    height: 100,
-                     width: 100,
+
+                    height: (MediaQuery.of(context).size.height)/10*1.5,
+                    width: (MediaQuery.of(context).size.width)/10*8,
+                    // height: 100,
+                    //  width: 100,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(30),
                       child: Image.network(
@@ -94,7 +96,7 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
                   ),
                   Container(
                     alignment: Alignment.bottomLeft,
-                    padding: EdgeInsets.only(left: 300, top: 40),
+                    padding: EdgeInsets.only(left: 250, top: 40),
                     child: CircularPercentIndicator(
                       radius: 30.0,
                       lineWidth: 8.0,

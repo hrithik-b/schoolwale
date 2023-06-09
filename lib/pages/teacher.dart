@@ -40,37 +40,38 @@ class _TeacherstateState extends State<Teacherstate> {
                 StackBuilder(
                     name: "\nDr. Srinivas",
                     sub: "Principal",
-                    edu: "Masters in journalism",
+                    edu: "MSE",
                     imgurl:
                        "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
                     containerclr:
                         Color.fromARGB(255, 241, 179, 222).withOpacity(0.5)),
                 SizedBox(
-                  height: 10,
+                  height: (MediaQuery.of(context).size.height)/10*0.5,
                 ),
                 Row(
                   children: [
                     //teacher1
-      
                     SizedBox(
+                      // width: (MediaQuery.of(context).size.width)/10*1.5,
                       width: 10,
                     ),
                     StackBuilder(
                         name: "\nMs. Namitha",
                         sub: "Science",
-                        edu: "Bachelor's of Education",
+                        edu: "B.ED",
                         imgurl:
                             "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fHww&w=1000&q=80",
                         containerclr:
                             Color.fromARGB(255, 179, 191, 241).withOpacity(0.5)),
       
                     SizedBox(
-                      width: 15,
+                      width: (MediaQuery.of(context).size.width)/10*0.5,
+                      // width: 15,
                     ),
                       StackBuilder(
                         name: "\nMs. Hashini",
                         sub: "English",
-                        edu: "Bachelor's of Arts",
+                        edu: "B.ED",
                         imgurl:
                             "https://t3.ftcdn.net/jpg/02/65/18/30/360_F_265183061_NkulfPZgRxbNg3rvYSNGGwi0iD7qbmOp.jpg",
                         containerclr:
@@ -83,68 +84,63 @@ class _TeacherstateState extends State<Teacherstate> {
                 ),
                 Row(
                   children: [
-                    
                     SizedBox(
                       width: 10,
                     ),
                      StackBuilder(
                         name: "\nMs. Joylin",
                         sub: "Social Science",
-                        edu: "M.Phil in Education",
+                        edu: "M.Phil",
                         imgurl:
                             "https://t4.ftcdn.net/jpg/03/83/25/83/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg",
                         containerclr:
-                             Color.fromARGB(255, 201, 179, 241)
-                                      .withOpacity(0.5)),
+                             Color.fromARGB(255, 201, 179, 241).withOpacity(0.5)),
                   
                     SizedBox(
-                      width: 15,
+                      height: 20,
+                      width: (MediaQuery.of(context).size.width)/10*0.5,
+                      // width: 15,
                     ),
                   
                      StackBuilder(
                         name: "\nMr. Jayanth",
                         sub: "Kannada",
-                        edu: "Bachelor's of Education",
+                        edu: "B.ED",
                         imgurl:
                             "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cGVyc29ufGVufDB8fDB8fHww&w=1000&q=80",
                         containerclr:
-                             Color.fromARGB(255, 114, 207, 176)
-                                      .withOpacity(0.5)),
-      
-                    //teacher2
+                             Color.fromARGB(255, 114, 207, 176).withOpacity(0.5)), //teacher2
                   ],
                 ),
                 SizedBox(
+                  // width: (MediaQuery.of(context).size.width)/10*1.5,
                   height: 10,
                 ),
                 Row(
                   children: [
                     SizedBox(
+                      // width: (MediaQuery.of(context).size.width)/10*1.5,
                       width: 15,
                     ),
-                  
                      StackBuilder(
                         name: "\nMr.Joyal",
                         sub: "P.T",
-                        edu: "BSc in Physical Therapy",
+                        edu: "BSc",
                         imgurl:
-                            "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
+                            "https://static.toiimg.com/thumb/msid-70439873,width-400,resizemode-4/70439873.jpg",
                         containerclr:
-                            Color.fromARGB(255, 167, 202, 79)
-                                      .withOpacity(0.5)),
+                            Color.fromARGB(255, 167, 202, 79).withOpacity(0.5)),
                     SizedBox(
-                      width: 15,
+                      width: (MediaQuery.of(context).size.width)/10*0.5,
                     ),
-                    
                      StackBuilder(
                         name: "\nMr.Tyson",
                         sub: "Maths",
-                        edu: "Bachelor's in Maths",
+                        edu: "Ms.Maths",
                         imgurl:
-                            "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
+                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR847fTNPDSUIClac9xYdCAUalRXP9QDG9bzkgGcTAmmw&usqp=CAU&ec=48665701",
                         containerclr:
-                            Color.fromARGB(255, 241, 206, 179)
-                                      .withOpacity(0.5)),
+                            Color.fromARGB(255, 241, 206, 179).withOpacity(0.5)),
                   ],
                 )
               ])),
