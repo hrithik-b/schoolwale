@@ -42,8 +42,8 @@ class StackBuilder extends StatelessWidget {
                         color: Color.fromARGB(255, 75, 69, 69)),
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     color: containerclr),
-                height: MediaQuery.of(context).size.height - 540,
-                width: MediaQuery.of(context).size.width - 205,
+               height:190,
+                width: 170,
                 child: Column(
                   children: [
                     SizedBox(

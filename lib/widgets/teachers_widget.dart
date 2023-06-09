@@ -49,10 +49,10 @@ class TeacherWidget extends StatelessWidget {
           child: Row(
             children: const [
               
-              TeacherItem(teacherName: "Mr.Harshini",teachingSubject: "English",teacherImageUrl:"assets/images/teacher-image.jpeg" ,),
-               TeacherItem(teacherName: "Ms.Joylin",teachingSubject: "Kannada",teacherImageUrl: "assets/images/teacher-image.jpeg",),
-               TeacherItem(teacherName: "Mr.Jevian",teachingSubject: "P.T.",teacherImageUrl: "assets/images/teacher-image.jpeg",),
-               TeacherItem(teacherName: "Ms.Namitha", teachingSubject: "Science", teacherImageUrl: "assets/images/teacher-image.jpeg")
+              TeacherItem(teacherName: "Ms.Harshini",teachingSubject: "English",teacherImageUrl:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d29tYW4lMjBwcm9maWxlfGVufDB8fDB8fHww&w=1000&q=80' ,),
+               TeacherItem(teacherName: "Ms.Joylin",teachingSubject: "Kannada",teacherImageUrl: 'https://media.istockphoto.com/id/1300972573/photo/pleasant-young-indian-woman-freelancer-consult-client-via-video-call.jpg?s=612x612&w=0&k=20&c=cbjgWR58DgUUETP6a0kpeiKTCxwJydyvXZXPeNTEOxg=',),
+               TeacherItem(teacherName: "Mr.Jevian",teachingSubject: "P.T.",teacherImageUrl: 'https://iimk.ac.in/uploads/admission_application/medium/PhD(PT)_04_03_M.jpg',),
+               TeacherItem(teacherName: "Ms.Namitha", teachingSubject: "Science", teacherImageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6tpRoxIPAY3A-ZbjTUdX0bXRZ3h_W9iwJ0w&usqp=CAU')
             ],
           ),
             

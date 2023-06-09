@@ -37,7 +37,7 @@ class Myprofile extends StatelessWidget {
              child: Container(
               // height:((MediaQuery.of(context).size.height)/10)*3,
               // width:((MediaQuery.of(context).size.width)/10)*7,
-               height:700,
+               height:750,
                width: 550,
                child: Column(
 

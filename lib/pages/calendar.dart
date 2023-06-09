@@ -45,9 +45,10 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
                     margin: EdgeInsets.only(top: 20, left: 20, right: 20),
 
                     // width: double.infinity,
-                    height: (MediaQuery.of(context).size.height)/10*1.5,
-                     width: (MediaQuery.of(context).size.width)/10*10,
-
+                    // height: (MediaQuery.of(context).size.height)/10*1.5,
+                    //  width: (MediaQuery.of(context).size.width)/10*10,
+                    height: 100,
+                    width: 500,
                     decoration: BoxDecoration(
                       boxShadow: [
                       BoxShadow(
@@ -65,14 +66,16 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
                     alignment: Alignment.bottomLeft,
                     padding: EdgeInsets.only(left: 50, top: 40),
 
-                    height: (MediaQuery.of(context).size.height)/10*1.5,
-                    width: (MediaQuery.of(context).size.width)/10*8,
-                    // height: 100,
-                    //  width: 100,
+                    // height: (MediaQuery.of(context).size.height)/10*1.5,
+                    // width: (MediaQuery.of(context).size.width)/10*8,
+                     height: 100,
+                      width: 100,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(30),
                       child: Image.network(
-                        'https://images.unsplash.com/photo-1572460418264-695212ed493a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGdpcmxzJTIwZmFjZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80',
+                        height: 50,
+                        width: 50,
+                        'https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-3.jpg',
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -83,7 +86,7 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
                     child: Text(
                       'Herley',
                       style: TextStyle(
-                          fontSize: 20, color: Color.fromARGB(255, 78, 45, 45)),
+                          fontSize: 20, color:Colors.white),
                     ),
                   ),
                   Container(

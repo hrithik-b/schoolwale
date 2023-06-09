@@ -50,7 +50,7 @@ class TeacherItem extends StatelessWidget {
                 decoration:   BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
                 image:  DecorationImage(
-                image:AssetImage(teacherImageUrl),
+                image:NetworkImage(teacherImageUrl),
                 fit: BoxFit.cover,
                 
             ),
