@@ -17,14 +17,14 @@ class Myprofile extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
 
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios_new),
-            onPressed: () {
-              // Define the action to be performed when the arrow icon is pressed
-              // For example, you can navigate to the previous screen
-              Navigator.pop(context);
-            },
-          ),
+          // leading: IconButton(
+          //   icon: Icon(Icons.arrow_back_ios_new),
+          //   onPressed: () {
+          //     // Define the action to be performed when the arrow icon is pressed
+          //     // For example, you can navigate to the previous screen
+          //     Navigator.pop(context);
+          //   },
+          // ),
            backgroundColor: Color(0xff0066C6),
           title: Text('Student Profile'),
           centerTitle: true,
