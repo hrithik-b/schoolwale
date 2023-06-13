@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class annoucementsUpdate extends StatelessWidget {
-  final IconData icon;
+  // final IconData icon;
   final String Annoucementname;
   final String Annocementsdate;
   final String AnnocementsUpdateddate;
-  const annoucementsUpdate({Key? key, required this.icon, required this.Annoucementname, required this.Annocementsdate, required this.AnnocementsUpdateddate, }) : super(key: key);
+  const annoucementsUpdate({Key? key, required this.Annoucementname, required this.Annocementsdate, required this.AnnocementsUpdateddate, }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +24,10 @@ class annoucementsUpdate extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                icon,
-                color: Color.fromARGB(255, 0, 101, 184),
-              ),
+              // Icon(
+              //   icon,
+              //   color: Color.fromARGB(255, 0, 101, 184),
+              // ),
               Text(
               Annoucementname,
                 textAlign: TextAlign.center,
