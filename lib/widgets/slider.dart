@@ -12,12 +12,12 @@ class CustomSlider extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         child: Row(
           children: const [
-         SliderItem(
-          heading: "Attendence", 
+            SliderItem(
+             heading: "Attendence",
           imageUrl: "assets/images/icons/attendance-icon.png",
           infoText: "98%",
           containerColor: Color.fromARGB(255, 255, 228, 226)
-          
+
           ),
           SliderItem(
           heading: "Events", 

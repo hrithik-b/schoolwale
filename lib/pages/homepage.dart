@@ -388,7 +388,7 @@ class _MyHomePageState extends State<MyHomePage> {
     MyHomePageContent(),
     Announcement(),
     ResultPage(),
-    Myprofile(),
+    ProfilePage(),
   ];
 
   void _onItemTapped(int index) {
