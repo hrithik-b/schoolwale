@@ -405,12 +405,12 @@ class _MyHomePageState extends State<MyHomePage> {
       drawer: const NavDrawer(),
       appBar: _selectedIndex == 0
           ? AppBar(
-        backgroundColor: const Color(0xff0066C6),
-        title: const Align(
-          alignment: Alignment.center,
-          child: Text(title),
-        ),
-      )
+              backgroundColor: const Color(0xff0066C6),
+              title: const Align(
+                alignment: Alignment.center,
+                child: Text(title),
+              ),
+            )
           : null,
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
