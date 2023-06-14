@@ -343,6 +343,7 @@ class ProfilePage extends StatelessWidget {
   }
 }
 
+
 class ProfilePageContent extends StatelessWidget {
   final ProfileConverter profileData;
 
@@ -355,6 +356,7 @@ class ProfilePageContent extends StatelessWidget {
       child: SizedBox(
         child: Card(
           child: Container(
+            padding: EdgeInsets.only( top: 20),
             height: 750,
             width: 550,
             child: Column(
@@ -368,7 +370,7 @@ class ProfilePageContent extends StatelessWidget {
                 SizedBox(height: 8),
                 Text(profileData.grade ?? ''),
                 SizedBox(height: 8),
-                Text(profileData.rollNumber ?? ''),
+                Text (profileData.rollNumber!= null ?profileData.rollNumber.toString() : ''),
                 SizedBox(height: 16),
                 Card(
                   elevation: 8,
@@ -425,7 +427,7 @@ class ProfilePageContent extends StatelessWidget {
                           color: Colors.blue,
                         ),
                         title: Text('Phone No'),
-                        subtitle: Text(profileData.phoneNo ?? ''),
+                        subtitle: Text(profileData.phoneNo != null ?profileData.phoneNo.toString() : ''),
                       ),
                       ListTile(
                         leading: Icon(
