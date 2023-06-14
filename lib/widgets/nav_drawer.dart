@@ -69,7 +69,7 @@ class NavDrawer extends StatelessWidget {
             title: const Text('Events'),
             onTap: () => {Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => Eventsupload()),
+    MaterialPageRoute(builder: (context) => Event_main()),
   ) },
           ),ListTile(
             leading: const Icon(Icons.people_alt_rounded,color:Colors.indigo),
