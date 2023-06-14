@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:schoolwale/pages/annoucement_page.dart';
 import 'package:schoolwale/pages/profilepage.dart';
 import 'package:schoolwale/pages/resultpage.dart';
-import 'package:schoolwale/widgets/announcement_items.dart';
 import 'package:schoolwale/widgets/slider.dart';
 import 'package:schoolwale/widgets/nav_drawer.dart';
 import 'package:schoolwale/widgets/carousel_slider.dart';
@@ -40,12 +39,19 @@ class _MyHomePageState extends State<MyHomePage> {
       drawer: const NavDrawer(),
       appBar: _selectedIndex == 0
           ? AppBar(
-              backgroundColor: const Color(0xff0066C6),
-              title: const Align(
-                alignment: Alignment.center,
-                child: Text(title),
-              ),
-            )
+        backgroundColor: const Color(0xff0066C6),
+        title: Align(
+          alignment: Alignment.topRight,
+          child: Text(
+            title,
+            style: const TextStyle(
+              fontWeight: FontWeight.w800, // Set font weight to bold
+              fontSize: 24, // Adjust font size as needed
+            ),
+          ),
+        ),
+        titleSpacing: 10,
+      )
           : null,
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
@@ -94,15 +100,18 @@ class MyHomePageContent extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: const <Widget>[
-            Padding(
-              padding: EdgeInsets.only(top: 30, left: 20),
-              child: Text(
-                'Hello Chintu',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Colors.white70,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
+            Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: EdgeInsets.only(top: 30, left: 20),
+                child: Text(
+                  'Hello Chintu',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 34,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
