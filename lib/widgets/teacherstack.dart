@@ -1,11 +1,13 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class StackBuilder extends StatelessWidget {
   final String name;
   final String sub;
   final String edu;
   final String imgurl;
+  final int phoneNumber;
   final containerclr;
 
   final double circleRadius = 120;
@@ -16,11 +18,17 @@ class StackBuilder extends StatelessWidget {
       required this.sub,
       required this.edu,
       required this.imgurl,
+      required this.phoneNumber,
       required this.containerclr});
+  callNumber(int number) async {
+    Uri dialNumber = Uri(scheme: 'tel', path: '$number');
+    await launchUrl(dialNumber);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.all((MediaQuery.of(context).size.height) / 80),
       child: Stack(
         alignment: Alignment.topCenter,
         children: <Widget>[
@@ -42,8 +50,8 @@ class StackBuilder extends StatelessWidget {
                         color: Color.fromARGB(255, 75, 69, 69)),
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     color: containerclr),
-               height:190,
-                width: 170,
+                height: 190,
+                width: (MediaQuery.of(context).size.height) / 5,
                 child: Column(
                   children: [
                     SizedBox(
@@ -88,7 +96,9 @@ class StackBuilder extends StatelessWidget {
                         ),
                         //SizedBox(width:1),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            callNumber(phoneNumber);
+                          },
                           color: Color(0xff0660C6),
                           icon: Icon(Icons.phone),
                         ),

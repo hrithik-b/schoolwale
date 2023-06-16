@@ -20,12 +20,6 @@ class MyOtp extends StatefulWidget {
 class _MyOtpState extends State<MyOtp> {
   final FirebaseAuth auth = FirebaseAuth.instance;
 
-  static void verifyWithDatabase(UserCredential value) {
-    print(value.user?.phoneNumber);
-
-    //return false;
-  }
-
   @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
@@ -133,7 +127,7 @@ class _MyOtpState extends State<MyOtp> {
                   },
                   child: Text('Verify Phone Number'),
                   style: ElevatedButton.styleFrom(
-                      primary: Color(0xff0660C6),
+                      backgroundColor: Color(0xff0660C6),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
                 ),
