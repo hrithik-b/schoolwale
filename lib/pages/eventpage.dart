@@ -194,6 +194,8 @@ class eventPageContent extends StatelessWidget {
           eventname: event['eventName'],
          eventpictureUrl: event['imageUrl'],
          eventDate: event['event_date'],
+         description:event['description']
+
           // icon: announcement['icon'],
         );
       },
