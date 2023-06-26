@@ -51,7 +51,7 @@ class EventsItems extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(8.0).copyWith(top: 0),
                       child: Text(
-                        eventDate,
+                        "held on "+eventDate,
                        // textAlign: TextAlign.left,
                         style: TextStyle(fontSize: 20.0),
                       ),
