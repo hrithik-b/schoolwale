@@ -53,14 +53,8 @@ class CustomSlider extends StatelessWidget {
       margin: const EdgeInsets.all(6.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.0),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            spreadRadius: 2,
-            blurRadius: 10,
-            offset: Offset(0, 1),
-          ),
-        ],
+
+
       ),
 
         child: SliderItem(
