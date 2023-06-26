@@ -24,6 +24,7 @@ class _MyPhoneState extends State<MyPhone> {
   @override
   Widget build(BuildContext context) {
     final auth = FirebaseAuth.instance;
+
     return Scaffold(
       // backgroundColor: Color(0xff0660C6),
       body: Container(
@@ -115,7 +116,7 @@ class _MyPhoneState extends State<MyPhone> {
                 child: ElevatedButton(
                   onPressed: () async {
                     await auth.verifyPhoneNumber(
-                      phoneNumber: '+91 6238 697 724',
+                      phoneNumber: '+91 1234567891',
                       verificationCompleted:
                           (PhoneAuthCredential credential) async {
                         // ANDROID ONLY!
