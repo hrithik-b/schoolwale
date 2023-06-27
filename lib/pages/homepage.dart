@@ -54,29 +54,98 @@ class _MyHomePageState extends State<MyHomePage> {
       )
           : null,
       body: _widgetOptions.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: 'Home',
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border(
+              top: BorderSide(
+                color: Colors.grey, // Adjust the color of the line
+                width: 1.0, // Adjust the thickness of the line
+              ),
+            ),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.campaign_outlined),
-            label: 'Announcement',
+          child: BottomNavigationBar(
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Stack(
+                  children: [
+                    Icon(Icons.home_outlined),
+                    if (_selectedIndex == 0)
+                      Positioned(
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        child: Container(
+                          height: 2,
+                          color: Colors.blueAccent, // Adjust the color of the line
+                        ),
+                      ),
+                  ],
+                ),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Stack(
+                  children: [
+                    Icon(Icons.campaign_outlined),
+                    if (_selectedIndex == 1)
+                      Positioned(
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        child: Container(
+                          height: 2,
+                          color: Colors.blueAccent, // Adjust the color of the line
+                        ),
+                      ),
+                  ],
+                ),
+                label: 'Announcement',
+              ),
+              BottomNavigationBarItem(
+                icon: Stack(
+                  children: [
+                    Icon(Icons.menu_book_outlined),
+                    if (_selectedIndex == 2)
+                      Positioned(
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        child: Container(
+                          height: 2,
+                          color: Colors.blueAccent, // Adjust the color of the line
+                        ),
+                      ),
+                  ],
+                ),
+                label: 'Result',
+              ),
+              BottomNavigationBarItem(
+                icon: Stack(
+                  children: [
+                    Icon(Icons.person_outline),
+                    if (_selectedIndex == 3)
+                      Positioned(
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        child: Container(
+                          height: 2,
+                          color: Colors.blueAccent, // Adjust the color of the line
+                        ),
+                      ),
+                  ],
+                ),
+                label: 'Profile',
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            selectedItemColor: Colors.blueAccent,
+            unselectedItemColor: Colors.grey,
+            onTap: _onItemTapped,
+            iconSize: 30,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.menu_book_outlined),
-            label: 'Result',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            label: 'Profile',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.grey,
-        onTap: _onItemTapped,
+        ),
       ),
     );
   }
@@ -111,6 +180,7 @@ class MyHomePageContent extends StatelessWidget {
                     color: Colors.white,
                     fontSize: 34,
                     fontWeight: FontWeight.bold,
+                    fontStyle: FontStyle.italic, // Set the text to italic font
                   ),
                 ),
               ),
