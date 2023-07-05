@@ -1,121 +1,121 @@
 import 'package:flutter/material.dart';
-import 'homepage.dart';
-class Myrules extends StatefulWidget {
-  @override
-  _myrules createState() => _myrules();
-}
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class _myrules extends State<Myrules> {
+class Myrules extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xff0660C6),
-        leading: IconButton(onPressed : () => {Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const MyHomePage()),
-  )},icon: Icon(Icons.arrow_back_ios),),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios),
+        ),
         title: Text(
-          
           "Rules And Regulations",
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
-      
-      body: SingleChildScrollView(
-      
-        child: Center(
-          
-          child: Container(
-            alignment: Alignment.center,
-            width:MediaQuery.of(context).size.width-40,
-            height: (MediaQuery.of(context).size.height)/10*10,
-            // height: 711,
-            decoration: BoxDecoration(
-              color: Color.fromRGBO(221, 215, 245, 0.302),
-              borderRadius: BorderRadius.circular(30),
-             
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0xffDDDDDD),
-                        blurRadius: 6.0,
-                        spreadRadius: 6.0,
-                        offset: Offset(0.0, 0.0),
-                      )
-                    ],
+      body: FutureBuilder<QuerySnapshot>(
+        future: FirebaseFirestore.instance.collection("Rules").get(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError || snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          final data = snapshot.data!.docs;
+          final ruleItems = data.map((doc) => RuleItem.fromJson(doc.data() as Map<String, dynamic>)).toList();
+          return ListView.builder(
+            itemCount: ruleItems.length,
+            itemBuilder: (context, index) {
+              final rule = ruleItems[index];
+              return RuleItemWidget(
+                title: rule.title,
+                description: rule.description,
+              );
+            },
+          );
+        },
+      ),
+    );
+  }
+}
+
+class RuleItem {
+  final String title;
+  final Map<String, dynamic> description;
+
+  RuleItem({
+    required this.title,
+    required this.description,
+  });
+
+  factory RuleItem.fromJson(Map<String, dynamic> json) {
+    return RuleItem(
+      title: json['Title'] as String,
+      description: json['Description'] as Map<String, dynamic>,
+    );
+  }
+}
+
+class RuleItemWidget extends StatelessWidget {
+  final String title;
+  final Map<String, dynamic> description;
+
+  const RuleItemWidget({
+    Key? key,
+    required this.title,
+    required this.description,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Color.fromRGBO(221, 215, 245, 0.302),
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Color(0xffDDDDDD),
+              blurRadius: 6.0,
+              spreadRadius: 6.0,
+              offset: Offset(0.0, 0.0),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 10,
+          ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "All the students must follow below rules.So kindly read the instructions carefully",
+              ),
+              SizedBox(height: 8),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: description.entries.map((entry) {
+                  return Text(
+                    '${entry.value}',
                     style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
                       wordSpacing: 3,
                       letterSpacing: 1,
                     ),
-                  ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Text(
-                              "1. All students are expected to greet their school teachers when they meet them whether they actually teach them or not",
-                              style: TextStyle(
-                                fontSize: 18,
-                                wordSpacing: 3,
-                                letterSpacing: 1,
-                              )),
-                          SizedBox(height: 4),
-                          Text(
-                              "2. No books (other than text books or library books), magazines Cds, Pen Drive etc should be brought to school. If they are brought, they will be confiscated.",
-                              style: TextStyle(
-                                fontSize: 18,
-                                wordSpacing: 3,
-                                letterSpacing: 1,
-                              )),
-                          SizedBox(height: 4),
-                          Text(
-                              "3. Students are expected to respect school property. No student should damage any school furniture, write or draw anything on the walls irregular or in any way damage things belonging to others. Any school property damaged even by accident should be reported at once to the class teacher or to the Principal.",
-                              style: TextStyle(
-                                fontSize: 18,
-                                wordSpacing: 3,
-                                letterSpacing: 1,
-                              )),
-                          SizedBox(height: 4),
-                          Text(
-                              "4. A student must always come to school in uniform, even during the Practical and special classes.",
-                              style: TextStyle(
-                                fontSize: 18,
-                                wordSpacing: 3,
-                                letterSpacing: 1,
-                              )),
-                          SizedBox(height: 4),
-                          Text(
-                              "5. Chewing chocolates and gum in the school premises is strictly forbidden.",
-                              style: TextStyle(
-                                fontSize: 18,
-                                wordSpacing: 3,
-                                letterSpacing: 1,
-                              )),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+                  );
+                }).toList(),
+              ),
+            ],
           ),
         ),
       ),
