@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:intl/intl.dart';
 
 class EventCalendarScreen extends StatefulWidget {
   const EventCalendarScreen({Key? key}) : super(key: key);
@@ -10,9 +11,19 @@ class EventCalendarScreen extends StatefulWidget {
 }
 
 class _EventCalendarScreenState extends State<EventCalendarScreen> {
+  //final List<DateTime> toHighlight = [];
+  DateTime dt = DateTime.parse('2023-07-02 03:04:05');
+  DateTime dtt = DateTime.parse('2023-07-03 03:04:05');
+
   CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.now();
+
   DateTime? _selectedDate;
+
+  final List<DateTime> toHighLight = [
+    DateTime.parse('2023-07-02 03:04:05'),
+    DateTime.parse('2023-07-03 03:04:05')
+  ];
 
   @override
   void initState() {
@@ -26,9 +37,9 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-         icon:Icon(Icons.arrow_back_ios_new),
-         onPressed: () { 
-          Navigator.pop(context);
+          icon: Icon(Icons.arrow_back_ios_new),
+          onPressed: () {
+            Navigator.pop(context);
           },
         ),
         centerTitle: true,
@@ -51,13 +62,13 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
                     width: 500,
                     decoration: BoxDecoration(
                       boxShadow: [
-                      BoxShadow(
-                        color: Color(0xffDDDDDD),
-                        blurRadius: 6.0,
-                        spreadRadius: 6.0,
-                        offset: Offset(0.0, 0.0),
-                      )
-                    ],
+                        BoxShadow(
+                          color: Color(0xffDDDDDD),
+                          blurRadius: 6.0,
+                          spreadRadius: 6.0,
+                          offset: Offset(0.0, 0.0),
+                        )
+                      ],
                       color: Color.fromARGB(255, 93, 156, 216),
                       borderRadius: BorderRadius.circular(50),
                     ),
@@ -68,8 +79,8 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
 
                     // height: (MediaQuery.of(context).size.height)/10*1.5,
                     // width: (MediaQuery.of(context).size.width)/10*8,
-                     height: 100,
-                      width: 100,
+                    height: 100,
+                    width: 100,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(30),
                       child: Image.network(
@@ -85,8 +96,7 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
                     padding: EdgeInsets.only(left: 110, top: 40),
                     child: Text(
                       'Herley',
-                      style: TextStyle(
-                          fontSize: 20, color:Colors.white),
+                      style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
                   ),
                   Container(
@@ -119,50 +129,82 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
             ),
             Container(
                 child: TableCalendar(
+              calendarBuilders: CalendarBuilders(
+                defaultBuilder: (context, day, focusedDay) {
+                  print(toHighLight);
+                  for (DateTime d in toHighLight) {
+                    print(day.day);
+                    if (day.day == d.day &&
+                        day.month == d.month &&
+                        day.year == d.year) {
+                      return Container(
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+
+                          color: Colors.red,
+                          // borderRadius: BorderRadius.all(
+                          //   Radius.circular(60.0),
+                          // ),
+                        ),
+                        child: Center(
+                          child: Text(
+                            '${day.day}',
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      );
+                    }
+                  }
+                  return null;
+                },
+              ),
+              eventLoader: (dt) {
+                return [];
+              },
               headerStyle:
                   HeaderStyle(formatButtonVisible: false, titleCentered: true),
               firstDay: DateTime(2023),
               lastDay: DateTime(2030),
               focusedDay: _focusedDay,
-              calendarFormat: _calendarFormat,
-              startingDayOfWeek: StartingDayOfWeek.monday,
-              rowHeight: 60,
-              daysOfWeekHeight: 60,
-              daysOfWeekStyle: const DaysOfWeekStyle(
-                weekdayStyle: TextStyle(color: Colors.cyan),
-              ),
-              calendarStyle: const CalendarStyle(
-                weekendTextStyle: TextStyle(color: Colors.red),
-                todayDecoration: BoxDecoration(
-                  color: Colors.blue,
-                  shape: BoxShape.circle,
-                ),
-                selectedDecoration: BoxDecoration(
-                  color: Colors.blue,
-                  shape: BoxShape.circle,
-                ),
-              ),
-              onDaySelected: (selectedDay, focusedDay) {
-                if (!isSameDay(_selectedDate, selectedDay)) {
-                  setState(() {
-                    _selectedDate = selectedDay;
-                    _focusedDay = focusedDay;
-                  });
-                }
-              },
-              selectedDayPredicate: (day) {
-                return isSameDay(_selectedDate, day);
-              },
-              onFormatChanged: (format) {
-                if (_calendarFormat != format) {
-                  setState(() {
-                    _calendarFormat = format;
-                  });
-                }
-              },
-              onPageChanged: (focusedDay) {
-                _focusedDay = focusedDay;
-              },
+              // calendarFormat: _calendarFormat,
+              // startingDayOfWeek: StartingDayOfWeek.monday,
+              // rowHeight: 60,
+              // daysOfWeekHeight: 60,
+              // daysOfWeekStyle: const DaysOfWeekStyle(
+              //   weekdayStyle: TextStyle(color: Colors.cyan),
+              // ),
+              // calendarStyle: const CalendarStyle(
+              //   weekendTextStyle: TextStyle(color: Colors.red),
+              //   todayDecoration: BoxDecoration(
+              //     color: Colors.blue,
+              //     shape: BoxShape.circle,
+              //   ),
+              //   selectedDecoration: BoxDecoration(
+              //     color: Colors.blue,
+              //     shape: BoxShape.circle,
+              //   ),
+              // ),
+              // onDaySelected: (selectedDay, focusedDay) {
+              //   if (!isSameDay(_selectedDate, selectedDay)) {
+              //     setState(() {
+              //       _selectedDate = selectedDay;
+              //       _focusedDay = focusedDay;
+              //     });
+              //   }
+              // },
+              // selectedDayPredicate: (day) {
+              //   return isSameDay(_selectedDate, day);
+              // },
+              // onFormatChanged: (format) {
+              //   if (_calendarFormat != format) {
+              //     setState(() {
+              //       _calendarFormat = format;
+              //     });
+              //   }
+              // },
+              // onPageChanged: (focusedDay) {
+              //   _focusedDay = focusedDay;
+              // },
             )),
           ],
         ),

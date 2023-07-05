@@ -1,17 +1,10 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 
 class englishnotes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:AppBar(
-        backgroundColor: Color(0xff0066C6),
-        title:Text('English Notes'),
-      ),
       body: GridView.count(
         crossAxisCount: 2,
         children: <Widget>[
