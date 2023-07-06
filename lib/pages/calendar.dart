@@ -164,7 +164,7 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
               headerStyle:
                   HeaderStyle(formatButtonVisible: false, titleCentered: true),
               firstDay: DateTime(2023),
-              lastDay: DateTime(2030),
+              lastDay: DateTime(2025),
               focusedDay: _focusedDay,
               // calendarFormat: _calendarFormat,
               // startingDayOfWeek: StartingDayOfWeek.monday,
