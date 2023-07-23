@@ -5,19 +5,23 @@ class annoucementsUpdate extends StatelessWidget {
   final String Annoucementname;
   final String Annocementsdate;
   final String AnnocementsUpdateddate;
-  const annoucementsUpdate({Key? key, required this.Annoucementname, required this.Annocementsdate, required this.AnnocementsUpdateddate, }) : super(key: key);
+  const annoucementsUpdate({
+    Key? key,
+    required this.Annoucementname,
+    required this.Annocementsdate,
+    required this.AnnocementsUpdateddate,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child:Card(
+      child: Card(
         elevation: 8,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
         color: Colors.lightBlue[50],
         child: Container(
-          
           height: 150,
           width: 200,
           alignment: Alignment.center,
@@ -29,7 +33,7 @@ class annoucementsUpdate extends StatelessWidget {
               //   color: Color.fromARGB(255, 0, 101, 184),
               // ),
               Text(
-              Annoucementname,
+                Annoucementname,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 24,
@@ -37,18 +41,17 @@ class annoucementsUpdate extends StatelessWidget {
                 ),
               ),
               Text(
-                Annocementsdate,
+                "On: $Annocementsdate",
                 textAlign: TextAlign.left,
               ),
               Text(
-                AnnocementsUpdateddate,
+                "Posted on: $AnnocementsUpdateddate",
                 textAlign: TextAlign.left,
               ),
             ],
           ),
         ),
       ),
-
     );
   }
 }

@@ -103,6 +103,7 @@
 // }
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import '../widgets/announcement_items.dart';
 
 class Announcement extends StatelessWidget {
@@ -145,8 +146,11 @@ class Announcement extends StatelessWidget {
       body: FutureBuilder(
         future: FirebaseFirestore.instance.collection("Announcements").get(),
         builder: (context, snapshot) {
-          if (snapshot.hasError || snapshot.connectionState == ConnectionState.waiting) {
-            return Text("Loading");
+          if (snapshot.hasError ||
+              snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
           }
           final data = snapshot.data!.docs;
           final announcements = data.map((doc) => doc.data()).toList();
@@ -160,7 +164,8 @@ class Announcement extends StatelessWidget {
 class AnnouncementPageContent extends StatelessWidget {
   final List<Map<String, dynamic>> announcements;
 
-  const AnnouncementPageContent({Key? key, required this.announcements}) : super(key: key);
+  const AnnouncementPageContent({Key? key, required this.announcements})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -168,9 +173,19 @@ class AnnouncementPageContent extends StatelessWidget {
       itemCount: announcements.length,
       itemBuilder: (context, index) {
         final announcement = announcements[index];
+        DateTime dt = (announcement['scheduledDate'] as Timestamp).toDate();
+        String date =
+            DateFormat('dd/MM/yyyy, hh:mm a').format(dt).split(",")[0];
+        String time = " ";
+        if ((DateFormat('dd/MM/yyyy, hh:mm a').format(dt).split(",")[1]) !=
+            " 12:00 AM") {
+          time = DateFormat('dd/MM/yyyy, hh:mm a').format(dt).split(",")[1];
+        }
+
+        //print(date + "he" + time);
         return annoucementsUpdate(
           Annoucementname: announcement['AnnName'],
-          Annocementsdate: announcement['AnnDate'],
+          Annocementsdate: date + time,
           AnnocementsUpdateddate: announcement['CreateDate'],
           // icon: announcement['icon'],
         );

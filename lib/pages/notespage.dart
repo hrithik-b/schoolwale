@@ -21,8 +21,9 @@ class NotesPage extends StatelessWidget {
         InkWell(
           onTap: () {
             launchURL() async {
-              final Uri url = Uri.parse(
-                  'https://drive.google.com/file/d/1UUm5Bzt9uOt_S96poiaS1LtJGNDhH0my/view');
+              String link = notesData[i];
+              print(notesData[i]);
+              final Uri url = Uri.parse(link);
               if (!await launchUrl(url)) {
                 throw Exception('Could not launch $url');
               }

@@ -3,6 +3,8 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:intl/intl.dart';
 
+import '../constants/constant_fields.dart';
+
 class EventCalendarScreen extends StatefulWidget {
   const EventCalendarScreen({Key? key}) : super(key: key);
 
@@ -12,7 +14,7 @@ class EventCalendarScreen extends StatefulWidget {
 
 class _EventCalendarScreenState extends State<EventCalendarScreen> {
   //final List<DateTime> toHighlight = [];
-  DateTime dt = DateTime.parse('2023-07-02 03:04:05');
+  DateTime dt = DateTime.parse('2023-07-11 03:04:05');
   DateTime dtt = DateTime.parse('2023-07-03 03:04:05');
 
   CalendarFormat _calendarFormat = CalendarFormat.month;
@@ -21,7 +23,7 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
   DateTime? _selectedDate;
 
   final List<DateTime> toHighLight = [
-    DateTime.parse('2023-07-02 03:04:05'),
+    DateTime.parse('2023-07-11 03:04:05'),
     DateTime.parse('2023-07-03 03:04:05')
   ];
 
@@ -43,7 +45,7 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
           },
         ),
         centerTitle: true,
-        backgroundColor: Color(0xff0066C6),
+        backgroundColor: primaryColor,
         title: const Text('Attendance'),
       ),
       body: SingleChildScrollView(
@@ -95,7 +97,7 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
                     alignment: Alignment.bottomLeft,
                     padding: EdgeInsets.only(left: 110, top: 40),
                     child: Text(
-                      'Herley',
+                      'Chintu',
                       style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
                   ),
@@ -103,7 +105,7 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
                     alignment: Alignment.bottomLeft,
                     padding: EdgeInsets.only(left: 110, top: 70),
                     child: Text(
-                      '9th',
+                      '3 B',
                       style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
                   ),
@@ -116,7 +118,7 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
                       animation: true,
                       percent: 0.7,
                       center: Text(
-                        "80%",
+                        "94%",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 12.0),
                       ),

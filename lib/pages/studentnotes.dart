@@ -41,14 +41,16 @@ class Classnotes extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.hasError ||
                 snapshot.connectionState == ConnectionState.waiting) {
-              return Text("Loading");
+              return Center(
+                child: CircularProgressIndicator(),
+              );
             }
             final data = snapshot.data!.data();
             final subjects = (data?.keys);
             subjects!.forEach((element) {
               cards.add(CardData(element));
             });
-            print(data?['Science'].length);
+            //print(data?['Science'].length);
             return Container(
               padding: EdgeInsets.all(20),
               child: GridView.count(

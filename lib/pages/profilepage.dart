@@ -318,9 +318,13 @@ class ProfilePage extends StatelessWidget {
         title: const Text("Profile"),
       ),
       body: FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
-        future: FirebaseFirestore.instance.collection("Students").doc('20230001').get(),
+        future: FirebaseFirestore.instance
+            .collection("Students")
+            .doc('20230001')
+            .get(),
         builder: (context, snapshot) {
-          if (snapshot.hasError || snapshot.connectionState == ConnectionState.waiting) {
+          if (snapshot.hasError ||
+              snapshot.connectionState == ConnectionState.waiting) {
             return Center(
               child: CircularProgressIndicator(),
             );
@@ -343,34 +347,39 @@ class ProfilePage extends StatelessWidget {
   }
 }
 
-
 class ProfilePageContent extends StatelessWidget {
   final ProfileConverter profileData;
 
-  const ProfilePageContent({Key? key, required this.profileData}) : super(key: key);
+  const ProfilePageContent({Key? key, required this.profileData})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String studentclass;
+    print(profileData.profileImageUrl);
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: SizedBox(
         child: Card(
           child: Container(
-            padding: EdgeInsets.only( top: 20),
+            padding: EdgeInsets.only(top: 20),
             height: 750,
             width: 550,
             child: Column(
               children: [
                 CircleAvatar(
                   radius: 50,
-                  backgroundImage: NetworkImage(profileData.profileImageUrl),
+                  backgroundImage:
+                      NetworkImage(profileData.profileImageUrl.toString()),
                 ),
                 SizedBox(height: 16),
                 Text(profileData.name ?? ''),
                 SizedBox(height: 8),
-                Text(profileData.grade ?? ''),
+                Text(profileData.grade! + profileData.section.toString() ?? ''),
                 SizedBox(height: 8),
-                Text (profileData.rollNumber!= null ?profileData.rollNumber.toString() : ''),
+                Text(profileData.rollNumber != null
+                    ? profileData.rollNumber.toString()
+                    : ''),
                 SizedBox(height: 16),
                 Card(
                   elevation: 8,
@@ -427,7 +436,9 @@ class ProfilePageContent extends StatelessWidget {
                           color: Colors.blue,
                         ),
                         title: Text('Phone No'),
-                        subtitle: Text(profileData.phoneNo != null ?profileData.phoneNo.toString() : ''),
+                        subtitle: Text(profileData.phoneNo != null
+                            ? profileData.phoneNo.toString()
+                            : ''),
                       ),
                       ListTile(
                         leading: Icon(
@@ -448,4 +459,3 @@ class ProfilePageContent extends StatelessWidget {
     );
   }
 }
-

@@ -1,7 +1,8 @@
 class ProfileConverter {
-  final String profileImageUrl;
+  final String? profileImageUrl;
   final String? name;
   final String? grade;
+  final String? section;
   final int rollNumber;
   final String? schoolName;
   final String? gender;
@@ -15,6 +16,7 @@ class ProfileConverter {
     required this.profileImageUrl,
     this.name,
     this.grade,
+    this.section,
     required this.rollNumber,
     this.schoolName,
     this.gender,
@@ -26,9 +28,10 @@ class ProfileConverter {
   });
 
   ProfileConverter.fromJson(Map<String, dynamic> json)
-      : profileImageUrl = json['profileImageUrl'] ?? '',
+      : profileImageUrl = json['ImageUrl'] as String?,
         name = json['Full Name'] as String?,
         grade = json['Class'] as String?,
+        section = json['Section'] as String,
         rollNumber = json['Register No'] as int,
         schoolName = json['School Name'] as String?,
         gender = json['Gender'] as String?,

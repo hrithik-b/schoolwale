@@ -1,4 +1,3 @@
-
 // import 'package:flutter/material.dart';
 
 // import '../widgets/events_items.dart';
@@ -43,7 +42,6 @@
 //       ),
 //       body: ListView(
 //         children: [
-
 
 //    //EventsItems(eventname: 'Singing Competition', eventpictureUrl:'https://i.pinimg.com/236x/be/81/19/be8119e6863dceba6f06ec1b25eed298--cultural-real-life.jpg',
 //       //   ),
@@ -145,13 +143,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../widgets/events_items.dart';
+
 class Event_main extends StatelessWidget {
   const Event_main({super.key});
 
   @override
   Widget build(BuildContext context) {
-   
-      return Scaffold(
+    return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios_new),
@@ -161,16 +159,18 @@ class Event_main extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-         backgroundColor: Color(0xff0066C6),
+        backgroundColor: Color(0xff0066C6),
         title: Text('Events'),
         centerTitle: true,
-
       ),
       body: FutureBuilder(
         future: FirebaseFirestore.instance.collection("Event").get(),
         builder: (context, snapshot) {
-          if (snapshot.hasError || snapshot.connectionState == ConnectionState.waiting) {
-            return Text("Loading");
+          if (snapshot.hasError ||
+              snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
           }
           final data = snapshot.data!.docs;
           final events = data.map((doc) => doc.data()).toList();
@@ -180,6 +180,7 @@ class Event_main extends StatelessWidget {
     );
   }
 }
+
 class eventPageContent extends StatelessWidget {
   final List<Map<String, dynamic>> events;
   const eventPageContent({super.key, required this.events});
@@ -190,16 +191,15 @@ class eventPageContent extends StatelessWidget {
       itemCount: events.length,
       itemBuilder: (context, index) {
         final event = events[index];
-        return  EventsItems(
-          eventname: event['eventName'],
-         eventpictureUrl: event['imageUrl'],
-         eventDate: event['event_date'],
-         description:event['description']
+        return EventsItems(
+            eventname: event['eventName'],
+            eventpictureUrl: event['imageUrl'],
+            eventDate: event['event_date'],
+            description: event['description']
 
-          // icon: announcement['icon'],
-        );
+            // icon: announcement['icon'],
+            );
       },
-
     );
   }
 }
