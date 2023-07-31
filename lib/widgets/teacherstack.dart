@@ -7,7 +7,7 @@ class StackBuilder extends StatelessWidget {
   final String sub;
   final String edu;
   final String imgurl;
-  final int phoneNumber;
+  final String phoneNumber;
   final containerclr;
 
   final double circleRadius = 120;
@@ -20,7 +20,7 @@ class StackBuilder extends StatelessWidget {
       required this.imgurl,
       required this.phoneNumber,
       required this.containerclr});
-  callNumber(int number) async {
+  callNumber(String number) async {
     Uri dialNumber = Uri(scheme: 'tel', path: '$number');
     await launchUrl(dialNumber);
   }
