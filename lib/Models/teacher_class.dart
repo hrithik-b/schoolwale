@@ -2,7 +2,7 @@ class TeacherClass {
   final String teacherName;
   final String teachingSubject;
   final String qualification;
-  final int phoneNumber;
+  final String phoneNumber;
   final String imageUrl;
 
   TeacherClass(
@@ -14,9 +14,9 @@ class TeacherClass {
 
   TeacherClass.fromJson(Map<String, Object?> json)
       : this(
-            teacherName: json['Name']! as String,
-            teachingSubject: json['Subjects']! as String,
-            qualification: json['Qualification']! as String,
-            phoneNumber: json['Phone number']! as int,
-            imageUrl: json['ImageUrl']! as String);
+            teacherName: json['name']! as String,
+            teachingSubject: json['subject']! as String,
+            qualification: json['qualification']! as String,
+            phoneNumber: json['phoneNo']! as String,
+            imageUrl: json['imageUrl']! as String);
 }

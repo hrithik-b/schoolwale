@@ -40,7 +40,9 @@ class _TeacherstateState extends State<Teacherstate> {
           builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
             if (snapshot.hasError ||
                 snapshot.connectionState == ConnectionState.waiting) {
-              return Text("Loading");
+              return Center(
+                child: CircularProgressIndicator(),
+              );
             }
 
             final documents = snapshot.data!.docs.map((e) {
@@ -87,26 +89,28 @@ class _TeacherContentState extends State<TeacherContent> {
 
     if (length >= 2) {
       for (int i = 0; i < length / 2; i++) {
-        widgetItems.add(Row(
-          children: [
-            StackBuilder(
-                name: teacherList[count].teacherName,
-                sub: teacherList[count].teachingSubject,
-                edu: teacherList[count].qualification,
-                imgurl: teacherList[count].imageUrl,
-                phoneNumber: teacherList[count].phoneNumber,
-                containerclr:
-                    Color.fromARGB(255, 241, 179, 222).withOpacity(0.5)),
-            StackBuilder(
-                name: teacherList[++count].teacherName,
-                sub: teacherList[count].teachingSubject,
-                edu: teacherList[count].qualification,
-                imgurl: teacherList[count].imageUrl,
-                phoneNumber: teacherList[count].phoneNumber,
-                containerclr:
-                    Color.fromARGB(255, 241, 179, 222).withOpacity(0.5)),
-          ],
-        ));
+        if (count < length - 1) {
+          widgetItems.add(Row(
+            children: [
+              StackBuilder(
+                  name: teacherList[count].teacherName,
+                  sub: teacherList[count].teachingSubject,
+                  edu: teacherList[count].qualification,
+                  imgurl: teacherList[count].imageUrl,
+                  phoneNumber: teacherList[count].phoneNumber,
+                  containerclr:
+                      Color.fromARGB(255, 241, 179, 222).withOpacity(0.5)),
+              StackBuilder(
+                  name: teacherList[++count].teacherName,
+                  sub: teacherList[count].teachingSubject,
+                  edu: teacherList[count].qualification,
+                  imgurl: teacherList[count].imageUrl,
+                  phoneNumber: teacherList[count].phoneNumber,
+                  containerclr:
+                      Color.fromARGB(255, 241, 179, 222).withOpacity(0.5)),
+            ],
+          ));
+        }
         count++;
       }
     }
@@ -114,11 +118,11 @@ class _TeacherContentState extends State<TeacherContent> {
     if (length % 2 != 0) {
       widgetItems.add(
         StackBuilder(
-            name: teacherList[count].teacherName,
-            sub: teacherList[count].teachingSubject,
-            edu: teacherList[count].qualification,
-            imgurl: teacherList[count].imageUrl,
-            phoneNumber: teacherList[count].phoneNumber,
+            name: teacherList[count - 1].teacherName,
+            sub: teacherList[count - 1].teachingSubject,
+            edu: teacherList[count - 1].qualification,
+            imgurl: teacherList[count - 1].imageUrl,
+            phoneNumber: teacherList[count - 1].phoneNumber,
             containerclr: Color.fromARGB(255, 241, 179, 222).withOpacity(0.5)),
       );
     }

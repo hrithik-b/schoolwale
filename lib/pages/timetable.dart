@@ -35,7 +35,9 @@ class _TimeTableState extends State<TimeTable> {
             builder: (context, snapshot) {
               if (snapshot.hasError ||
                   snapshot.connectionState == ConnectionState.waiting) {
-                return Text("Loading");
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
               }
 
               final data = snapshot.data!.data();

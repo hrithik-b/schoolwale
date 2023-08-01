@@ -49,7 +49,7 @@ class AboutContainer extends StatelessWidget {
             ],
           ),
           child: CircleAvatar(
-            backgroundImage: NetworkImage(imageUrl),
+            backgroundImage: AssetImage('assets/images/schoolPicture.jpg'),
             radius: 120,
           ),
         ),
@@ -135,8 +135,7 @@ class AboutContainer extends StatelessWidget {
             ],
           ),
         ),
-
-    ],
+      ],
     );
   }
 }

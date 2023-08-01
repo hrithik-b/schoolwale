@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../Models/marks_converter.dart';
+import '../constants/constant_fields.dart';
 import '../widgets/result_widgets/exam_result_bar.dart';
 import '../widgets/result_widgets/marks_table.dart';
 
@@ -13,7 +14,15 @@ class MarksCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text(""),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios_new),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          centerTitle: true,
+          backgroundColor: primaryColor,
+          title: const Text('Results'),
         ),
         body: FutureBuilder(
           future: FirebaseFirestore.instance

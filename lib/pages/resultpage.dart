@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import '../constants/constant_fields.dart';
 import '../widgets/result_widgets/classtest_internal_widget.dart';
 
 class ResultPage extends StatelessWidget {
@@ -10,7 +11,15 @@ class ResultPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Results"),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios_new),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          centerTitle: true,
+          backgroundColor: primaryColor,
+          title: const Text('Results'),
         ),
         body: FutureBuilder(
           future: FirebaseFirestore.instance
@@ -20,7 +29,9 @@ class ResultPage extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.hasError ||
                 snapshot.connectionState == ConnectionState.waiting) {
-              return Text("Loading");
+              return Center(
+                child: CircularProgressIndicator(),
+              );
             }
             final data = snapshot.data!.data();
             final exams = (data?['Completed_exams']) as List;

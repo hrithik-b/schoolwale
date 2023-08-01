@@ -7,6 +7,7 @@ class annoucementsUpdate extends StatelessWidget {
   final String Annoucementname;
   final Annocementsdate;
   final String AnnocementsUpdateddate;
+<<<<<<< HEAD
   final String AnnouncementDescription;
   const annoucementsUpdate(
       {Key? key,
@@ -15,6 +16,14 @@ class annoucementsUpdate extends StatelessWidget {
       required this.AnnocementsUpdateddate,
       required this.AnnouncementDescription})
       : super(key: key);
+=======
+  const annoucementsUpdate({
+    Key? key,
+    required this.Annoucementname,
+    required this.Annocementsdate,
+    required this.AnnocementsUpdateddate,
+  }) : super(key: key);
+>>>>>>> 09a67c5f54dc09d623658857e6a92d01dd7c7e83
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +35,11 @@ class annoucementsUpdate extends StatelessWidget {
         ),
         color: Colors.lightBlue[50],
         child: Container(
+<<<<<<< HEAD
           height: 300,
+=======
+          height: 150,
+>>>>>>> 09a67c5f54dc09d623658857e6a92d01dd7c7e83
           width: 200,
           alignment: Alignment.center,
           child: Column(
@@ -45,6 +58,7 @@ class annoucementsUpdate extends StatelessWidget {
                 ),
               ),
               Text(
+<<<<<<< HEAD
                 AnnouncementDescription,
                 //textAlign: TextAlign.center,
                 style: TextStyle(
@@ -57,10 +71,13 @@ class annoucementsUpdate extends StatelessWidget {
                 DateFormat.yMd()
                         .add_jm()
                         .format((Annocementsdate as Timestamp).toDate()) ??'',
+=======
+                "On: $Annocementsdate",
+>>>>>>> 09a67c5f54dc09d623658857e6a92d01dd7c7e83
                 textAlign: TextAlign.left,
               ),
               Text(
-                AnnocementsUpdateddate,
+                "Posted on: $AnnocementsUpdateddate",
                 textAlign: TextAlign.left,
               ),
             ],
