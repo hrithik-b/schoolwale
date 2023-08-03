@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
 
 class AboutContainer extends StatelessWidget {
-  final String heading;
-  final String content;
-  final String header;
+  final String Schoolname;
   final String imageUrl;
-  final String missionhead;
-  final String missioncontent;
+  final String mission;
+  final String description;
 
   const AboutContainer({
     Key? key,
-    required this.heading,
-    required this.content,
-    required this.header,
+    required this.Schoolname,
     required this.imageUrl,
-    required this.missioncontent,
-    required this.missionhead,
+    required this.description,
+    required this.mission,
   }) : super(key: key);
 
   @override
@@ -27,7 +23,7 @@ class AboutContainer extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           alignment: Alignment.center,
           child: Text(
-            header,
+            Schoolname,
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
@@ -74,17 +70,10 @@ class AboutContainer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                heading,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+
               SizedBox(height: 8),
               Text(
-                content,
+                description,
                 style: TextStyle(
                   fontSize: 18,
                   wordSpacing: 3,
@@ -115,17 +104,9 @@ class AboutContainer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                missionhead,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
               SizedBox(height: 8),
               Text(
-                missioncontent,
+                mission,
                 style: TextStyle(
                   fontSize: 18,
                   wordSpacing: 3,

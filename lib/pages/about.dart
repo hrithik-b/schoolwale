@@ -50,12 +50,11 @@ class AboutPageContent extends StatelessWidget {
       itemBuilder: (context, index) {
         final item = aboutItems[index];
         return AboutContainer(
-          heading: item['heading'],
-          content:item['content'],
+          Schoolname: item['schoolName'],
           imageUrl: item['imageUrl'],
-          header:item ['header'],
-          missioncontent: item['missioncontent'],
-          missionhead: item['missionhead'],
+          description:item ['description'],
+          mission: item['mission'],
+
 
 
         );
