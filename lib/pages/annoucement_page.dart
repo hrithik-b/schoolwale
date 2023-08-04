@@ -171,8 +171,8 @@ class AnnouncementPageContent extends StatelessWidget {
         return annoucementsUpdate(
           Annoucementname: announcement['AnnName'],
           Annocementsdate: announcement['scheduledDate'],
-          // AnnouncementDescription:announcement['description'],
-          AnnocementsUpdateddate: announcement['CreateDate'],
+
+          AnnocementsUpdateddate: announcement['CreateDate'], Announcementdescription:announcement ['description'],
 
           // icon: announcement['icon'],
         );

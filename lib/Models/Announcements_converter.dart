@@ -1,7 +1,7 @@
 class AnnouncementConverter{
   final String title;
-  final String date;
-  final scheduled_date;
+  final DateTime date;
+  final DateTime scheduled_date;
   final String description;
 
   AnnouncementConverter({
@@ -15,9 +15,9 @@ class AnnouncementConverter{
   factory AnnouncementConverter.fromJson(Map<String, dynamic> json) {
     return AnnouncementConverter(
       title: json['AnnName'] as String,
-      scheduled_date: json['scheduledDate'] ,
+      scheduled_date: DateTime.parse(json['scheduledDate']),
       description: json['description'] as String,
-      date: json['CreateDate'] as String,
+      date: DateTime.parse(json['CreateDate']),
     );
   }
 }
