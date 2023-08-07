@@ -1,15 +1,18 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class EventsItems extends StatelessWidget {
   final String eventname;
   final String eventpictureUrl;
-  final String eventDate;
+  final Timestamp eventDate;
   final String description;
   const EventsItems(
       {Key? key,
       required this.eventname,
       required this.eventpictureUrl,
-      required this.eventDate, required this.description})
+      required this.eventDate,
+        required this.description})
       : super(key: key);
 
   @override
@@ -51,8 +54,8 @@ class EventsItems extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(8.0).copyWith(top: 0),
                       child: Text(
-                        "held on "+eventDate,
-                       // textAlign: TextAlign.left,
+                         "held on "+ DateFormat.yMd().add_jm().format((eventDate as Timestamp).toDate()) ?? '',
+                       textAlign: TextAlign.left,
                         style: TextStyle(fontSize: 20.0),
                       ),
                     ),

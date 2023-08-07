@@ -7,11 +7,14 @@ class annoucementsUpdate extends StatelessWidget {
   final String Annoucementname;
   final Annocementsdate;
   final String AnnocementsUpdateddate;
+  final String Announcementdescription;
+
   const annoucementsUpdate({
     Key? key,
     required this.Annoucementname,
     required this.Annocementsdate,
     required this.AnnocementsUpdateddate,
+    required this.Announcementdescription,
   }) : super(key: key);
 
   @override
@@ -43,13 +46,17 @@ class annoucementsUpdate extends StatelessWidget {
                 ),
               ),
               Text(
-               'On'+DateFormat.yMd().add_jm().format((Annocementsdate as Timestamp).toDate()) ?? '',
+                'On:'+DateFormat.yMd().add_jm().format((Annocementsdate as Timestamp).toDate()) ?? '',
                 textAlign: TextAlign.left,
               ),
               Text(
                 "Posted on: $AnnocementsUpdateddate",
                 textAlign: TextAlign.left,
               ),
+              Text(
+                Announcementdescription,
+                textAlign: TextAlign.center,
+                ),
             ],
           ),
         ),

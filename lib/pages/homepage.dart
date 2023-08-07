@@ -166,9 +166,9 @@ class MyHomePageContent extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: Column(
+        child:  Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          children: const <Widget>[
+          children: <Widget>[
             Align(
               alignment: Alignment.topLeft,
               child: Padding(
