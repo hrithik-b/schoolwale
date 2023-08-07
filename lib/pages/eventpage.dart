@@ -145,7 +145,7 @@ import 'package:flutter/material.dart';
 import '../widgets/events_items.dart';
 
 class Event_main extends StatelessWidget {
-  const Event_main({super.key});
+  const Event_main({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -154,8 +154,6 @@ class Event_main extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios_new),
           onPressed: () {
-//             // Define the action to be performed when the arrow icon is pressed
-//             // For example, you can navigate to the previous screen
             Navigator.pop(context);
           },
         ),
@@ -163,17 +161,16 @@ class Event_main extends StatelessWidget {
         title: Text('Events'),
         centerTitle: true,
       ),
-      body: FutureBuilder(
+      body: FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
         future: FirebaseFirestore.instance.collection("Event").get(),
         builder: (context, snapshot) {
-          if (snapshot.hasError ||
-              snapshot.connectionState == ConnectionState.waiting) {
+          if (snapshot.hasError || snapshot.connectionState == ConnectionState.waiting) {
             return Center(
               child: CircularProgressIndicator(),
             );
           }
-          final data = snapshot.data!.docs;
-          final events = data.map((doc) => doc.data()).toList();
+
+          final events = snapshot.data!.docs;
           return eventPageContent(events: events);
         },
       ),
@@ -182,23 +179,21 @@ class Event_main extends StatelessWidget {
 }
 
 class eventPageContent extends StatelessWidget {
-  final List<Map<String, dynamic>> events;
-  const eventPageContent({super.key, required this.events});
+  final List<QueryDocumentSnapshot<Map<String, dynamic>>> events;
+  const eventPageContent({required this.events});
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: events.length,
       itemBuilder: (context, index) {
-        final event = events[index];
+        final event = events[index].data();
         return EventsItems(
-            eventname: event['eventName'],
-            eventpictureUrl: event['imageUrl'],
-            eventDate: event['eventDate'],
-            description: event['description']
-
-            // icon: announcement['icon'],
-            );
+          eventname: event['eventName'],
+          eventpictureUrl: event['imageUrl'],
+          eventDate: event['eventDate'],
+          description: event['description'],
+        );
       },
     );
   }

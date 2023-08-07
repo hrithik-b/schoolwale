@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:schoolwale/widgets/slider_items.dart';
 
 class CustomSlider extends StatelessWidget {
-  const CustomSlider({Key? key});
+  final int eventCount;
+  final int resultCount;
+
+  const CustomSlider({required this.eventCount, required this.resultCount});
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +25,13 @@ class CustomSlider extends StatelessWidget {
             _buildSliderItem(
               heading: "Events",
               imageUrl: "assets/images/icons/events.png",
-              infoText: "7",
+              infoText: "$eventCount",
               containerColor: Color.fromARGB(255, 107, 200, 2),
             ),
             _buildSliderItem(
               heading: "Results",
               imageUrl: "assets/images/icons/results.png",
-              infoText: "5",
+              infoText: "$resultCount", // Show the result count here
               containerColor: Color.fromARGB(255, 255, 212, 245),
             ),
             _buildSliderItem(
@@ -53,17 +56,13 @@ class CustomSlider extends StatelessWidget {
       margin: const EdgeInsets.all(6.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.0),
-
-
       ),
-
-        child: SliderItem(
-          heading: heading,
-          imageUrl: imageUrl,
-          infoText: infoText,
-          containerColor: containerColor,
-        ),
-
+      child: SliderItem(
+        heading: heading,
+        imageUrl: imageUrl,
+        infoText: infoText,
+        containerColor: containerColor,
+      ),
     );
   }
 }

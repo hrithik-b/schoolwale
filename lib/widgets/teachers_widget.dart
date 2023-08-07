@@ -63,6 +63,7 @@ class TeacherWidget extends StatelessWidget {
                       teachingSubject: teacherData['subject'] ?? '',
                       teacherImageUrl: teacherData['imageUrl'] ?? '',
                       qualification:teacherData['qualification']??'',
+                       phoneNo:teacherData ['phoneNo'],
 
 
                     );

@@ -1,4 +1,5 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:schoolwale/pages/annoucement_page.dart';
 import 'package:schoolwale/pages/profilepage.dart';
@@ -166,31 +167,64 @@ class MyHomePageContent extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: const Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: EdgeInsets.only(top: 30, left: 20),
-                child: Text(
-                  'Hello Chintu',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 34,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic, // Set the text to italic font
-                  ),
-                ),
-              ),
-            ),
-            CustomSlider(),
-            CustomCarouselSlider(),
-            TeacherWidget(),
-          ],
+        child: FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
+          future: FirebaseFirestore.instance.collection("Event").get(),
+          builder: (context, eventSnapshot) {
+            if (eventSnapshot.hasError || eventSnapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+
+            final events = eventSnapshot.data!.docs;
+            final eventCount = events.length;
+
+            return FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
+              future: FirebaseFirestore.instance.collection("Students").doc('20230001').get(),
+              builder: (context, resultSnapshot) {
+                if (resultSnapshot.hasError || resultSnapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+
+                final resultData = resultSnapshot.data!.data();
+                final exams = (resultData?['Completed_exams']) as List;
+                final resultCount = exams.length;
+
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 30, left: 20),
+                        child: Text(
+                          'Hello Chintu',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 34,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                      ),
+                    ),
+                    CustomSlider(
+                      eventCount: eventCount,
+                      resultCount: resultCount,
+                    ),
+                    CustomCarouselSlider(),
+                    TeacherWidget(),
+                  ],
+                );
+              },
+            );
+          },
         ),
       ),
     );
   }
 }
+
