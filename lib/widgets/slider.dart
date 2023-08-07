@@ -31,7 +31,7 @@ class CustomSlider extends StatelessWidget {
             _buildSliderItem(
               heading: "Results",
               imageUrl: "assets/images/icons/results.png",
-              infoText: "$resultCount", // Show the result count here
+              infoText: "$resultCount",
               containerColor: Color.fromARGB(255, 255, 212, 245),
             ),
             _buildSliderItem(
