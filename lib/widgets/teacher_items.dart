@@ -24,7 +24,7 @@ class TeacherItem extends StatelessWidget {
         children: [
           Container(
             width: 140,
-            height: 180,
+            height: 160,
             decoration: BoxDecoration(
               border: Border.all(
                 color: Color.fromARGB(255, 179, 191, 241),
@@ -37,7 +37,7 @@ class TeacherItem extends StatelessWidget {
             width: 140,
             height: 30,
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 255, 255, 255),
+              color: Color.fromARGB(250, 250, 250, 250),
             ),
           ),
           Container(
@@ -89,31 +89,31 @@ class TeacherItem extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
-          Positioned(
-            top: 140,
-            left: 10,
-            right: 30,
-            child: Text(
-              "Call now",
-              style: TextStyle(
-                fontSize: 13,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          Positioned(
-            top: 135,
-            left: 90,
-            width: 30,
-            height: 30,
-            child: Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/icons/phone-call.png'),
-                ),
-              ),
-            ),
-          ),
+          // Positioned(
+          //   top: 140,
+          //   left: 10,
+          //   right: 30,
+          //   child: Text(
+          //     "Call now",
+          //     style: TextStyle(
+          //       fontSize: 13,
+          //     ),
+          //     textAlign: TextAlign.center,
+          //   ),
+          // ),
+          // Positioned(
+          //   top: 135,
+          //   left: 90,
+          //   width: 30,
+          //   height: 30,
+          //   child: Container(
+          //     decoration: BoxDecoration(
+          //       image: DecorationImage(
+          //         image: AssetImage('assets/images/icons/phone-call.png'),
+          //       ),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
