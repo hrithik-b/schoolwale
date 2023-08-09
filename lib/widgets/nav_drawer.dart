@@ -112,7 +112,7 @@ class NavDrawer extends StatelessWidget {
             onTap: () => {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Myrules()),
+                MaterialPageRoute(builder: (context) => MyRules()),
               )
             },
           ),

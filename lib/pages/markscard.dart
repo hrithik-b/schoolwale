@@ -26,7 +26,7 @@ class MarksCard extends StatelessWidget {
         ),
         body: FutureBuilder(
           future: FirebaseFirestore.instance
-              .collection(testName)
+              .collection(testName.trim())
               .doc('20230001')
               .get(),
           builder: (context, snapshot) {
@@ -34,6 +34,9 @@ class MarksCard extends StatelessWidget {
                 snapshot.connectionState == ConnectionState.waiting) {
               return Text("Loading");
             }
+            print(snapshot.data!.data());
+            print(testName);
+
             final data = snapshot.data!.data();
             final marks_data_item = MarksConverter.fromJson(data!);
 

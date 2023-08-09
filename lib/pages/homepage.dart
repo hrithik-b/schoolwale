@@ -200,6 +200,7 @@ class MyHomePageContent extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.only(top: 30, left: 20),
                         child: Text(
+
                           'Hello Chintu',
                           textAlign: TextAlign.left,
                           style: TextStyle(

@@ -1,7 +1,8 @@
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Myrules extends StatelessWidget {
+class MyRules extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +21,7 @@ class Myrules extends StatelessWidget {
         centerTitle: true,
       ),
       body: FutureBuilder<QuerySnapshot>(
-        future: FirebaseFirestore.instance.collection("Rules").get(),
+        future: FirebaseFirestore.instance.collection("rules").get(),
         builder: (context, snapshot) {
           if (snapshot.hasError || snapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -47,7 +48,7 @@ class Myrules extends StatelessWidget {
 
 class RuleItem {
   final String title;
-  final Map<String, dynamic> description;
+  final String description; // Change the type to String
 
   RuleItem({
     required this.title,
@@ -56,15 +57,15 @@ class RuleItem {
 
   factory RuleItem.fromJson(Map<String, dynamic> json) {
     return RuleItem(
-      title: json['Title'] as String,
-      description: json['Description'] as Map<String, dynamic>,
+      title: json['title'] as String,
+      description: json['description'] as String, // Change the type to String
     );
   }
 }
 
 class RuleItemWidget extends StatelessWidget {
   final String title;
-  final Map<String, dynamic> description;
+  final String description; // Change the type to String
 
   const RuleItemWidget({
     Key? key,
@@ -94,26 +95,23 @@ class RuleItemWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                title,
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+              Center(
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               SizedBox(height: 8),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: description.entries.map((entry) {
-                  return Text(
-                    '${entry.value}',
-                    style: TextStyle(
-                      fontSize: 18,
-                      wordSpacing: 3,
-                      letterSpacing: 1,
-                    ),
-                  );
-                }).toList(),
+              Text(
+                description, // Display the description as a single string
+                style: TextStyle(
+                  fontSize: 18,
+                  wordSpacing: 3,
+                  letterSpacing: 1,
+                ),
               ),
             ],
           ),
@@ -121,4 +119,10 @@ class RuleItemWidget extends StatelessWidget {
       ),
     );
   }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: MyRules(),
+  ));
 }

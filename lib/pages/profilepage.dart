@@ -339,8 +339,10 @@ class ProfilePage extends StatelessWidget {
           }
 
           final profileData = ProfileConverter.fromJson(data);
+          print(data);
 
           return ProfilePageContent(profileData: profileData);
+
         },
       ),
     );
