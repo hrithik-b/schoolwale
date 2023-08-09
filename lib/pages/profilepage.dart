@@ -316,6 +316,7 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Profile"),
+        backgroundColor: const Color(0xff0066C6),
       ),
       body: FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
         future: FirebaseFirestore.instance
