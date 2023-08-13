@@ -11,17 +11,22 @@ import '../constants/constant_fields.dart';
 
 // import 'homepage.dart';
 class MyOtp extends StatefulWidget {
-  const MyOtp({Key? key}) : super(key: key);
+  final phone;
+  const MyOtp({Key? key, required this.phone}) : super(key: key);
 
   @override
-  State<MyOtp> createState() => _MyOtpState();
+  State<MyOtp> createState() => _MyOtpState(phone);
 }
 
 class _MyOtpState extends State<MyOtp> {
+  final phone;
   final FirebaseAuth auth = FirebaseAuth.instance;
+
+  _MyOtpState(this.phone);
 
   @override
   Widget build(BuildContext context) {
+    print(phone);
     final defaultPinTheme = PinTheme(
       width: 56,
       height: 56,

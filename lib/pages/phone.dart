@@ -116,7 +116,7 @@ class _MyPhoneState extends State<MyPhone> {
                 child: ElevatedButton(
                   onPressed: () async {
                     await auth.verifyPhoneNumber(
-                      phoneNumber: '+91 1234567891',
+                      phoneNumber: '+91 $phone',
                       verificationCompleted:
                           (PhoneAuthCredential credential) async {
                         // ANDROID ONLY!
@@ -133,8 +133,10 @@ class _MyPhoneState extends State<MyPhone> {
                       },
                       codeSent: (String verificationId, int? resendToken) {
                         MyPhone.verify = verificationId;
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => MyOtp()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MyOtp(phone: phone)));
                       },
                       timeout: const Duration(seconds: 60),
                       codeAutoRetrievalTimeout: (String verificationId) {},
