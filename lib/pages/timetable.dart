@@ -4,7 +4,9 @@ import '../widgets/time_table_item.dart';
 import 'package:photo_view/photo_view.dart';
 
 class TimeTable extends StatefulWidget {
-  const TimeTable({super.key});
+  final String classname;
+  final String section;
+  const TimeTable({super.key, this.classname="",this.section=''});
 
   @override
   State<TimeTable> createState() => _TimeTableState();
@@ -30,7 +32,8 @@ class _TimeTableState extends State<TimeTable> {
         body: FutureBuilder(
             future: FirebaseFirestore.instance
                 .collection("Timetable")
-                .doc('1 A')
+                .where('class' ,isEqualTo: widget.classname)
+                .where('section' ,isEqualTo: widget.section)
                 .get(),
             builder: (context, snapshot) {
               if (snapshot.hasError ||
@@ -40,12 +43,16 @@ class _TimeTableState extends State<TimeTable> {
                 );
               }
 
-              final data = snapshot.data!.data() as Map<String,dynamic>;
-            //  final imageUrl = (data?['imageUrl']) as String;
-            final String  className= snapshot.data!.id;
-          //  print("classname "+ className);
-                     // final section = data['section'];
-                      final imageUrl = data[className.substring(2)]['imageUrl'];
+              final docs = snapshot.data!.docs;
+
+              if (docs.isEmpty) {
+                return Text('No documents');
+              }
+
+              final data = docs.first.data();
+              final imageUrl = data['imageUrl'];
+              final className = data['class'];
+
               return Column(
                   mainAxisAlignment: MainAxisAlignment.start,
 // height: ((MediaQuery.of(context).size.height) / 10) * 7,
@@ -70,8 +77,10 @@ class _TimeTableState extends State<TimeTable> {
                           fit: BoxFit.scaleDown,
                         ),
                       ),
-                      Center(child:Text(
-                        className,style: const TextStyle(
+                      Center(
+                        child:Text(
+                        className,
+                          style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     

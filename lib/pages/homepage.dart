@@ -21,6 +21,19 @@ class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
   late String _profileName;
 
+  final user = FirebaseAuth.instance.currentUser;
+  String phone = '+91';
+
+  @override
+  void initState() {
+
+    if (user?.phoneNumber != null) {
+      phone = user!.phoneNumber!.substring(3);
+    }
+
+    super.initState();
+  }
+
   static List<Widget> _widgetOptions = <Widget>[
     MyHomePageContent(),
     Announcement(),
@@ -39,7 +52,32 @@ class _MyHomePageState extends State<MyHomePage> {
     const title = 'Schoolwale';
 
     return Scaffold(
-      drawer: const NavDrawer(),
+      drawer: FutureBuilder(
+          future: FirebaseFirestore.instance
+              .collection("Students")
+            .where("Registered_number", isEqualTo: phone)
+            .get(),
+      builder: (context, resultSnapshot) {
+        if (resultSnapshot.hasError ||
+            resultSnapshot.connectionState == ConnectionState.waiting) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+
+        final resultData = resultSnapshot.data!.docs;
+        if (resultData.isEmpty) {
+          // Handle case where no documents match the query
+          return Text("No data available");
+        }
+
+        final studentData = resultData.first.data() as Map<String, dynamic>;
+        final className = studentData['Class'];
+        final section = studentData['Section'];
+
+        return NavDrawer(classname: className, section: section,);
+      }
+    ),
       appBar: _selectedIndex == 0
           ? AppBar(
         backgroundColor: const Color(0xff0066C6),

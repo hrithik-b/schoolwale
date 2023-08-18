@@ -11,7 +11,9 @@ import 'package:schoolwale/pages/timetable.dart';
 import 'package:schoolwale/pages/calendar.dart';
 
 class NavDrawer extends StatelessWidget {
-  const NavDrawer({super.key});
+  final String classname;
+  final String section;
+  const NavDrawer({super.key, this.classname="",this.section=''});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +51,7 @@ class NavDrawer extends StatelessWidget {
             onTap: () => {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) =>  TimeTable()),
+                MaterialPageRoute(builder: (context) =>  TimeTable(classname: classname, section: section,)),
               )
             },
           ),
