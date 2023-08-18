@@ -86,7 +86,7 @@ class Classnotes extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => NotesPage(
-                                      subjectNmae: title,
+                                      subjectName: title,
                                       notesData: notesData,
                                     ),
                                   ));

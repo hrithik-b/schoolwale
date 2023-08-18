@@ -3,13 +3,13 @@ class ProfileConverter {
   final String? name;
   final String? grade;
   final String? section;
-  final int rollNumber;
+  final String rollNumber;
   final String? schoolName;
   final String? gender;
   final String? dateOfBirth;
   final String? fathersName;
   final String? mothersName;
-  final int? phoneNo;
+  final String phoneNo;
   final String? address;
 
   ProfileConverter({
@@ -32,12 +32,12 @@ class ProfileConverter {
         name = json['Full Name'] as String?,
         grade = json['Class'] as String?,
         section = json['Section'] as String,
-        rollNumber = json['Register No'] as int,
+        rollNumber = json['Register No'] as String,
         schoolName = json['School Name'] as String?,
         gender = json['Gender'] as String?,
         dateOfBirth = json['DOB'] as String?,
         fathersName = json['Fathers Name'] as String?,
         mothersName = json['Mothers Name'] as String?,
-        phoneNo = json['Registered_number'] as int,
+        phoneNo = json['Registered_number'] as String,
         address = json['Address'] as String?;
 }

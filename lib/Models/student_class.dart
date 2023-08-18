@@ -1,10 +1,10 @@
 class StudentInfo {
-  final int registeredNumbers;
-  final int registerNumber;
+  final String registeredNumbers;
+  final String registerNumber;
   StudentInfo({required this.registeredNumbers, required this.registerNumber});
 
   StudentInfo.fromJson(Map<String, Object?> json)
       : this(
-            registeredNumbers: json['Registered_number']! as int,
-            registerNumber: json['Register No'] as int);
+            registeredNumbers: json['Registered_number']! as String,
+            registerNumber: json['Register No'] as String);
 }

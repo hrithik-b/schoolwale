@@ -11,7 +11,7 @@ import '../constants/constant_fields.dart';
 
 // import 'homepage.dart';
 class MyOtp extends StatefulWidget {
-  final phone;
+  final String phone;
   const MyOtp({Key? key, required this.phone}) : super(key: key);
 
   @override
@@ -19,7 +19,7 @@ class MyOtp extends StatefulWidget {
 }
 
 class _MyOtpState extends State<MyOtp> {
-  final phone;
+  final String phone;
   final FirebaseAuth auth = FirebaseAuth.instance;
 
   _MyOtpState(this.phone);
@@ -124,7 +124,7 @@ class _MyOtpState extends State<MyOtp> {
                         .signInWithCredential(credential)
                         .then((value) => nextPage = VerifyUserPhone(
                               userdata: value,
-                              numberToVerify: 6238697724,
+                              numberToVerify: phone,
                             ));
 
                     Navigator.push(context,
@@ -147,7 +147,7 @@ class _MyOtpState extends State<MyOtp> {
 
 class VerifyUserPhone extends StatelessWidget {
   final UserCredential userdata;
-  final int numberToVerify;
+  final String numberToVerify;
   const VerifyUserPhone(
       {Key? key, required this.userdata, required this.numberToVerify})
       : super(key: key);
@@ -163,21 +163,21 @@ class VerifyUserPhone extends StatelessWidget {
             return Text("Loading");
           }
           bool isUser = false;
-          Map<int, int> phoneNumbers = new Map();
+          Map<String, String> phoneNumbers = new Map();
           final documents = snapshot.data!.docs.map((e) {
             return e.data();
           });
 
-          print(documents);
           final student_info;
           for (var val in documents) {
             //print(val);
             final object = StudentInfo.fromJson(val);
             phoneNumbers[object.registeredNumbers] = object.registerNumber;
           }
-          print(phoneNumbers);
 
           phoneNumbers.forEach((key, value) {
+            print(key);
+            print(value);
             if (key == numberToVerify) {
               currentUser = value;
               isUser = true;

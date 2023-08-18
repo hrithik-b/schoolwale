@@ -1,5 +1,6 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:schoolwale/pages/annoucement_page.dart';
 import 'package:schoolwale/pages/profilepage.dart';
@@ -32,7 +33,6 @@ class _MyHomePageState extends State<MyHomePage> {
       _selectedIndex = index;
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -154,8 +154,27 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class MyHomePageContent extends StatelessWidget {
+class MyHomePageContent extends StatefulWidget {
   const MyHomePageContent({Key? key}) : super(key: key);
+
+  @override
+  State<MyHomePageContent> createState() => _MyHomePageContentState();
+}
+
+class _MyHomePageContentState extends State<MyHomePageContent> {
+
+  final user = FirebaseAuth.instance.currentUser;
+  String phone = '+91';
+
+  @override
+  void initState() {
+
+    if (user?.phoneNumber != null) {
+      phone = user!.phoneNumber!.substring(3);
+    }
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -179,10 +198,13 @@ class MyHomePageContent extends StatelessWidget {
             }
 
             final events = eventSnapshot.data!.docs;
-            final eventCount = events.length;
+            final eventCount = events.length; //You should initialize this variable with the registered phone number
 
-            return FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
-              future: FirebaseFirestore.instance.collection("Students").doc('20230001').get(),
+            return FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
+              future: FirebaseFirestore.instance
+                  .collection("Students")
+                  .where("Registered_number", isEqualTo: phone)
+                  .get(),
               builder: (context, resultSnapshot) {
                 if (resultSnapshot.hasError || resultSnapshot.connectionState == ConnectionState.waiting) {
                   return Center(
@@ -190,8 +212,16 @@ class MyHomePageContent extends StatelessWidget {
                   );
                 }
 
-                final resultData = resultSnapshot.data!.data();
-                final exams = (resultData?['Completed_exams']) as List;
+                final resultData = resultSnapshot.data!.docs;
+                if (resultData.isEmpty) {
+                  // Handle case where no documents match the query
+                  return Text("No data available");
+                }
+
+                final studentData = resultData.first.data() as Map<String, dynamic>;
+                final studentName = studentData['Full Name'];
+
+                final exams = (studentData['completed_exams']) as List;
                 final resultCount = exams.length;
 
                 return Column(
@@ -202,8 +232,7 @@ class MyHomePageContent extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.only(top: 30, left: 20),
                         child: Text(
-
-                          'Hello Chintu',
+                          'Hello $studentName', // Display the student's name
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             color: Colors.white,
@@ -214,6 +243,7 @@ class MyHomePageContent extends StatelessWidget {
                         ),
                       ),
                     ),
+
                     CustomSlider(
                       eventCount: eventCount,
                       resultCount: resultCount,

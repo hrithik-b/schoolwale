@@ -29,7 +29,22 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
 
-      home: const MyHomePage(),
+      home: StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          }
+
+          final user = snapshot.data;
+
+          if (user == null) {
+            return const MyPhone();
+          }
+
+          return MyHomePage();
+        },
+      ),
       // home: FutureBuilder(
       //   future:
       //     FirebaseFirestore.instance.collection("ClassTest1").doc('20230001').get(),

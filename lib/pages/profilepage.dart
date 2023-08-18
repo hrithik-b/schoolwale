@@ -303,13 +303,33 @@
 //         phoneNo = json['Registered_number'],
 //         address = json['Address'];
 // }
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../Models/profilepage_converter.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+
+  final user = FirebaseAuth.instance.currentUser;
+  String phone = '+91';
+
+  @override
+  void initState() {
+
+    if (user?.phoneNumber != null) {
+      phone = user!.phoneNumber!.substring(3);
+    }
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -318,11 +338,11 @@ class ProfilePage extends StatelessWidget {
         title: const Text("Profile"),
         backgroundColor: const Color(0xff0066C6),
       ),
-      body: FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
+      body: FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
         future: FirebaseFirestore.instance
             .collection("Students")
-            .doc('20230001')
-            .get(),
+             .where("Registered_number", isEqualTo: phone)
+             .get(),
         builder: (context, snapshot) {
           if (snapshot.hasError ||
               snapshot.connectionState == ConnectionState.waiting) {
@@ -334,13 +354,12 @@ class ProfilePage extends StatelessWidget {
             return Text("No data available");
           }
 
-          final data = snapshot.data!.data();
-          if (data == null) {
+          final data = snapshot.data!.docs;
+          if (data.isEmpty) {
             return Text("No data available");
           }
 
-          final profileData = ProfileConverter.fromJson(data);
-          print(data);
+          final profileData = ProfileConverter.fromJson(data.first.data());
 
           return ProfilePageContent(profileData: profileData);
 
