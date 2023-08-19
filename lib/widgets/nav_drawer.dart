@@ -13,7 +13,8 @@ import 'package:schoolwale/pages/calendar.dart';
 class NavDrawer extends StatelessWidget {
   final String classname;
   final String section;
-  const NavDrawer({super.key, this.classname="",this.section=''});
+
+  const NavDrawer({super.key, this.classname="",this.section='',});
 
   @override
   Widget build(BuildContext context) {

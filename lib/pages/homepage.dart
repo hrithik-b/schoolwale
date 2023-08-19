@@ -24,6 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final user = FirebaseAuth.instance.currentUser;
   String phone = '+91';
 
+
   @override
   void initState() {
 
@@ -75,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
         final className = studentData['Class'];
         final section = studentData['Section'];
 
-        return NavDrawer(classname: className, section: section,);
+        return NavDrawer(classname: className, section: section, );
       }
     ),
       appBar: _selectedIndex == 0

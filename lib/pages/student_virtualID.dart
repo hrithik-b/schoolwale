@@ -1,20 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
-// void main() {
-//   runApp(MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       title: 'Virtual Id card',
-//       home: Virtualid(),
-//     );
-//   }
-// }
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:photo_view/photo_view.dart';
 
 class Virtualid extends StatefulWidget {
   @override
@@ -22,63 +9,77 @@ class Virtualid extends StatefulWidget {
 }
 
 class _Virtualid extends State<Virtualid> {
+  final user = FirebaseAuth.instance.currentUser;
+  String phone = '+91';
+
+  @override
+  void initState() {
+    if (user?.phoneNumber != null) {
+      phone = user!.phoneNumber!.substring(3);
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios_new),
-            onPressed: () {
-              // Define the action to be performed when the arrow icon is pressed
-              // For example, you can navigate to the previous screen
-              Navigator.pop(context);
-            },
-          ),
-          backgroundColor: Color(0xff0066C6),
-          title: Text('Virtual Id Card'),
-          centerTitle: true,
-        ),
-        body: FutureBuilder(
-          future: FirebaseFirestore.instance
-              .collection("Students")
-              .doc('20230001')
-              .get(),
-          builder: (context, snapshot) {
-            if (snapshot.hasError ||
-                snapshot.connectionState == ConnectionState.waiting) {
-              return Text("Loading");
-            }
-            final data = snapshot.data!.data();
-            final imageUrl = (data?['virtualIdUrl']) as String;
-            //print(exams);
-            return ListView(
-              children: [
-                Card(
-                  child: Column(
-                    children: [
-                      Container(
-                        height: ((MediaQuery.of(context).size.height) / 10) * 7,
-                        width: ((MediaQuery.of(context).size.width) / 10) * 10,
-// width:350,
-// height:550,
-                        child: Image.network(
-                          imageUrl,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Text(
-                          'Virtual ID Card',
-                          style: TextStyle(fontSize: 20.0),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            );
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios_new),
+          onPressed: () {
+            Navigator.pop(context);
           },
-        ));
+        ),
+        backgroundColor: Color(0xff0066C6),
+        title: Text('Virtual Id Card'),
+        centerTitle: true,
+      ),
+      body: FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
+        future: FirebaseFirestore.instance
+            .collection("Students")
+            .where("Registered_number", isEqualTo: phone)
+            .get()
+            .then((querySnapshot) => querySnapshot.docs.first),
+        builder: (context, snapshot) {
+          if (snapshot.hasError ||
+              snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          }
+
+          final data = snapshot.data!.data();
+          final imageUrl = (data?['virtualIdUrl']) as String;
+
+          return ListView(
+            children: [
+              Card(
+                child: Column(
+                  children: [
+                    Container(
+                      height: ((MediaQuery.of(context).size.height) / 10) * 7,
+                      width: ((MediaQuery.of(context).size.width) / 10) * 10,
+                      child: PhotoView(
+                        imageProvider: NetworkImage(imageUrl),
+                        minScale: PhotoViewComputedScale.contained * 0.9,
+                        maxScale: PhotoViewComputedScale.covered * 8,
+                        backgroundDecoration: BoxDecoration(
+                          color: Colors.white, // Set the background color here
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        'Virtual ID Card',
+                        style: TextStyle(fontSize: 20.0),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          );
+        },
+      ),
+    );
   }
 }
