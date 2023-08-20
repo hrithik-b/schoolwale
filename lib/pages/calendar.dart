@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:schoolwale/services/attendance_service.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:intl/intl.dart';
 
+import '../Models/attendance_class.dart';
 import '../constants/constant_fields.dart';
 
 class EventCalendarScreen extends StatefulWidget {
@@ -13,19 +15,12 @@ class EventCalendarScreen extends StatefulWidget {
 }
 
 class _EventCalendarScreenState extends State<EventCalendarScreen> {
-  //final List<DateTime> toHighlight = [];
-  DateTime dt = DateTime.parse('2023-07-11 03:04:05');
-  DateTime dtt = DateTime.parse('2023-07-03 03:04:05');
-
   CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.now();
 
   DateTime? _selectedDate;
-
-  final List<DateTime> toHighLight = [
-    DateTime.parse('2023-07-11 03:04:05'),
-    DateTime.parse('2023-07-03 03:04:05')
-  ];
+//store the abstent dates in the format ('2023-07-11 03:04:05'),
+  final List<DateTime> toHighLight = [];
 
   @override
   void initState() {
@@ -39,7 +34,7 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new),
+          icon: const Icon(Icons.arrow_back_ios_new),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -130,84 +125,80 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
               ),
             ),
             Container(
-                child: TableCalendar(
-              calendarBuilders: CalendarBuilders(
-                defaultBuilder: (context, day, focusedDay) {
-                  print(toHighLight);
-                  for (DateTime d in toHighLight) {
-                    print(day.day);
-                    if (day.day == d.day &&
-                        day.month == d.month &&
-                        day.year == d.year) {
-                      return Container(
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
+                child: StreamBuilder(
+              stream: AttendanceService().attendanceList,
+              builder: (BuildContext context,
+                  AsyncSnapshot<List<AttendanceClass>> snapshot) {
+                if (snapshot.hasError ||
+                    snapshot.connectionState == ConnectionState.waiting) {
+                  print(snapshot.error);
+                  return Center(
+                    child: CircularProgressIndicator(
+                      backgroundColor: Colors.red,
+                      strokeWidth: 6,
+                    ),
+                  );
+                }
+                final documents = snapshot.data ?? [];
+                for (var data in documents) {
+                  //checking if the current user is present in the absentees list
+                  if (data.absentees.contains(currentUser)) {
+                    //DateTime.parse('2023-07-11 03:04:05'),
 
-                          color: Colors.red,
-                          // borderRadius: BorderRadius.all(
-                          //   Radius.circular(60.0),
-                          // ),
-                        ),
-                        child: Center(
-                          child: Text(
-                            '${day.day}',
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      );
-                    }
+                    DateTime inputDate =
+                        DateFormat('dd-MM-yyyy').parse(data.date);
+
+                    String formattedDate =
+                        DateFormat('yyyy-MM-dd').format(inputDate);
+                    // print(formattedDate);
+                    DateTime dt = DateFormat('yyyy-MM-dd').parse(formattedDate);
+                    //print("Formatted $dt");
+                    toHighLight.add(dt);
+                    // print(toHighLight);
                   }
-                  return null;
-                },
-              ),
-              eventLoader: (dt) {
-                return [];
+                }
+
+                return TableCalendar(
+                  calendarBuilders: CalendarBuilders(
+                    defaultBuilder: (context, day, focusedDay) {
+                      // print(toHighLight);
+                      for (DateTime d in toHighLight) {
+                        //print(day.day);
+                        if (day.day == d.day &&
+                            day.month == d.month &&
+                            day.year == d.year) {
+                          return Container(
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+
+                              color: Colors.red,
+                              // borderRadius: BorderRadius.all(
+                              //   Radius.circular(60.0),
+                              // ),
+                            ),
+                            child: Center(
+                              child: Text(
+                                '${day.day}',
+                                style: const TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          );
+                        }
+                      }
+                      return null;
+                    },
+                  ),
+                  eventLoader: (dt) {
+                    return [];
+                  },
+                  headerStyle: HeaderStyle(
+                      formatButtonVisible: false, titleCentered: true),
+                  firstDay: DateTime(2023),
+                  lastDay: DateTime(2025),
+                  focusedDay: _focusedDay,
+                );
               },
-              headerStyle:
-                  HeaderStyle(formatButtonVisible: false, titleCentered: true),
-              firstDay: DateTime(2023),
-              lastDay: DateTime(2025),
-              focusedDay: _focusedDay,
-              // calendarFormat: _calendarFormat,
-              // startingDayOfWeek: StartingDayOfWeek.monday,
-              // rowHeight: 60,
-              // daysOfWeekHeight: 60,
-              // daysOfWeekStyle: const DaysOfWeekStyle(
-              //   weekdayStyle: TextStyle(color: Colors.cyan),
-              // ),
-              // calendarStyle: const CalendarStyle(
-              //   weekendTextStyle: TextStyle(color: Colors.red),
-              //   todayDecoration: BoxDecoration(
-              //     color: Colors.blue,
-              //     shape: BoxShape.circle,
-              //   ),
-              //   selectedDecoration: BoxDecoration(
-              //     color: Colors.blue,
-              //     shape: BoxShape.circle,
-              //   ),
-              // ),
-              // onDaySelected: (selectedDay, focusedDay) {
-              //   if (!isSameDay(_selectedDate, selectedDay)) {
-              //     setState(() {
-              //       _selectedDate = selectedDay;
-              //       _focusedDay = focusedDay;
-              //     });
-              //   }
-              // },
-              // selectedDayPredicate: (day) {
-              //   return isSameDay(_selectedDate, day);
-              // },
-              // onFormatChanged: (format) {
-              //   if (_calendarFormat != format) {
-              //     setState(() {
-              //       _calendarFormat = format;
-              //     });
-              //   }
-              // },
-              // onPageChanged: (focusedDay) {
-              //   _focusedDay = focusedDay;
-              // },
-            )),
+            ))
           ],
         ),
       ),
