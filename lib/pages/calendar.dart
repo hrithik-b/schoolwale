@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 import 'package:intl/intl.dart';
 
 import '../Models/attendance_class.dart';
@@ -135,41 +135,20 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
                       ),
                       Container(
                         padding: EdgeInsets.all(10),
-                        child: FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
-                          future: FirebaseFirestore.instance
-                              .collection("Attendance")
-                              .doc(phone)
-                              .get(),
-                          builder: (context, snapshot) {
-                            if (snapshot.hasError ||
-                                snapshot.connectionState == ConnectionState.waiting) {
-                              return CircularProgressIndicator();
-                            }
-
-                            final data = snapshot.data?.data();
-                            final int totalDays = data?['totalDays'] ?? 0;
-
-                            final absentDays = data?['absentDays'] ?? [];
-
-                            final double attendancePercentage =
-                                ((totalDays - absentDays.length) / totalDays) * 100;
-
-                            return CircularPercentIndicator(
-                              radius: 30.0,
-                              lineWidth: 8.0,
-                              animation: true,
-                              percent: attendancePercentage / 100,
-                              center: Text(
-                                "${attendancePercentage.toStringAsFixed(1)}%",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12.0,
-                                ),
-                              ),
-                              circularStrokeCap: CircularStrokeCap.round,
-                              progressColor: Color.fromARGB(255, 255, 255, 255),
-                            );
-                          },
+                        child: CircularPercentIndicator(
+                          radius: 30.0,
+                          lineWidth: 8.0,
+                          animation: true,
+                          percent: 0.7,
+                          center: Text(
+                            "94%",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12.0,
+                            ),
+                          ),
+                          circularStrokeCap: CircularStrokeCap.round,
+                          progressColor: Color.fromARGB(255, 255, 255, 255),
                         ),
                       ),
                     ],
@@ -178,70 +157,68 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
               ),
             ),
             Container(
-              child: StreamBuilder(
-                stream: AttendanceService().attendanceList,
-                builder: (BuildContext context,
-                    AsyncSnapshot<List<AttendanceClass>> snapshot) {
-                  if (snapshot.hasError ||
-                      snapshot.connectionState == ConnectionState.waiting) {
-                    print(snapshot.error);
-                    return Center(
-                      child: CircularProgressIndicator(
-                        backgroundColor: Colors.red,
-                        strokeWidth: 6,
-                      ),
-                    );
-                  }
-                  final documents = snapshot.data ?? [];
-                  for (var data in documents) {
-                    if (data.absentees.contains(currentUser)) {
-                      DateTime inputDate =
-                      DateFormat('dd-MM-yyyy').parse(data.date);
-
-                      String formattedDate =
-                      DateFormat('yyyy-MM-dd').format(inputDate);
-                      DateTime dt =
-                      DateFormat('yyyy-MM-dd').parse(formattedDate);
-                      toHighLight.add(dt);
-                    }
-                  }
-
-                  return TableCalendar(
-                    calendarBuilders: CalendarBuilders(
-                      defaultBuilder: (context, day, focusedDay) {
-                        for (DateTime d in toHighLight) {
-                          if (day.day == d.day &&
-                              day.month == d.month &&
-                              day.year == d.year) {
-                            return Container(
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.red,
-                              ),
-                              child: Center(
-                                child: Text(
-                                  '${day.day}',
-                                  style: const TextStyle(color: Colors.white),
-                                ),
-                              ),
-                            );
-                          }
-                        }
-                        return null;
-                      },
+                child: StreamBuilder(
+              stream: AttendanceService().attendanceList,
+              builder: (BuildContext context,
+                  AsyncSnapshot<List<AttendanceClass>> snapshot) {
+                if (snapshot.hasError ||
+                    snapshot.connectionState == ConnectionState.waiting) {
+                  print(snapshot.error);
+                  return Center(
+                    child: CircularProgressIndicator(
+                      backgroundColor: Colors.red,
+                      strokeWidth: 6,
                     ),
-                    eventLoader: (dt) {
-                      return [];
-                    },
-                    headerStyle: HeaderStyle(
-                        formatButtonVisible: false, titleCentered: true),
-                    firstDay: DateTime(2023),
-                    lastDay: DateTime(2025),
-                    focusedDay: _focusedDay,
                   );
-                },
-              ),
-            )
+                }
+                final documents = snapshot.data ?? [];
+                for (var data in documents) {
+                  if (data.absentees.contains(currentUser)) {
+                    DateTime inputDate =
+                        DateFormat('dd-MM-yyyy').parse(data.date);
+
+                    String formattedDate =
+                        DateFormat('yyyy-MM-dd').format(inputDate);
+                    DateTime dt = DateFormat('yyyy-MM-dd').parse(formattedDate);
+                    toHighLight.add(dt);
+                  }
+                }
+
+                return TableCalendar(
+                  calendarBuilders: CalendarBuilders(
+                    defaultBuilder: (context, day, focusedDay) {
+                      for (DateTime d in toHighLight) {
+                        if (day.day == d.day &&
+                            day.month == d.month &&
+                            day.year == d.year) {
+                          return Container(
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.red,
+                            ),
+                            child: Center(
+                              child: Text(
+                                '${day.day}',
+                                style: const TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          );
+                        }
+                      }
+                      return null;
+                    },
+                  ),
+                  eventLoader: (dt) {
+                    return [];
+                  },
+                  headerStyle: HeaderStyle(
+                      formatButtonVisible: false, titleCentered: true),
+                  firstDay: DateTime(2023),
+                  lastDay: DateTime(2025),
+                  focusedDay: _focusedDay,
+                );
+              },
+            ))
           ],
         ),
       ),
