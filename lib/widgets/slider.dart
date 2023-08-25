@@ -5,8 +5,9 @@ import 'package:schoolwale/widgets/slider_items.dart';
 class CustomSlider extends StatelessWidget {
   final int eventCount;
   final int resultCount;
+  final int notesCount;
 
-  const CustomSlider({required this.eventCount, required this.resultCount});
+  const CustomSlider({required this.eventCount, required this.resultCount,  required this.notesCount});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +38,7 @@ class CustomSlider extends StatelessWidget {
             _buildSliderItem(
               heading: "Notes",
               imageUrl: "assets/images/icons/notes.png",
-              infoText: "12",
+              infoText: "$notesCount",
               containerColor: Color.fromARGB(255, 52, 225, 222),
             ),
           ],

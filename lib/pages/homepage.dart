@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -24,14 +23,11 @@ class _MyHomePageState extends State<MyHomePage> {
   final user = FirebaseAuth.instance.currentUser;
   String phone = '+91';
 
-
   @override
   void initState() {
-
     if (user?.phoneNumber != null) {
       phone = user!.phoneNumber!.substring(3);
     }
-
     super.initState();
   }
 
@@ -54,31 +50,32 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       drawer: FutureBuilder(
-          future: FirebaseFirestore.instance
-              .collection("Students")
+        future: FirebaseFirestore.instance
+            .collection("Students")
             .where("Registered_number", isEqualTo: phone)
             .get(),
-      builder: (context, resultSnapshot) {
-        if (resultSnapshot.hasError ||
-            resultSnapshot.connectionState == ConnectionState.waiting) {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        }
+        builder: (context, resultSnapshot) {
+          if (resultSnapshot.hasError ||
+              resultSnapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
 
-        final resultData = resultSnapshot.data!.docs;
-        if (resultData.isEmpty) {
-          // Handle case where no documents match the query
-          return Text("No data available");
-        }
+          final resultData = resultSnapshot.data!.docs;
+          if (resultData.isEmpty) {
+            // Handle case where no documents match the query
+            return Text("No data available");
+          }
 
-        final studentData = resultData.first.data() as Map<String, dynamic>;
-        final className = studentData['Class'];
-        final section = studentData['Section'];
+          final studentData =
+          resultData.first.data() as Map<String, dynamic>;
+          final className = studentData['Class'];
+          final section = studentData['Section'];
 
-        return NavDrawer(classname: className, section: section, );
-      }
-    ),
+          return NavDrawer(classname: className, section: section);
+        },
+      ),
       appBar: _selectedIndex == 0
           ? AppBar(
         backgroundColor: const Color(0xff0066C6),
@@ -87,8 +84,8 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Text(
             title,
             style: const TextStyle(
-              fontWeight: FontWeight.w800, // Set font weight to bold
-              fontSize: 24, // Adjust font size as needed
+              fontWeight: FontWeight.w800,
+              fontSize: 24,
             ),
           ),
         ),
@@ -101,8 +98,8 @@ class _MyHomePageState extends State<MyHomePage> {
           decoration: BoxDecoration(
             border: Border(
               top: BorderSide(
-                color: Colors.grey, // Adjust the color of the line
-                width: 1.0, // Adjust the thickness of the line
+                color: Colors.grey,
+                width: 1.0,
               ),
             ),
           ),
@@ -119,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         right: 0,
                         child: Container(
                           height: 2,
-                          color: Colors.blueAccent, // Adjust the color of the line
+                          color: Colors.blueAccent,
                         ),
                       ),
                   ],
@@ -137,7 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         right: 0,
                         child: Container(
                           height: 2,
-                          color: Colors.blueAccent, // Adjust the color of the line
+                          color: Colors.blueAccent,
                         ),
                       ),
                   ],
@@ -155,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         right: 0,
                         child: Container(
                           height: 2,
-                          color: Colors.blueAccent, // Adjust the color of the line
+                          color: Colors.blueAccent,
                         ),
                       ),
                   ],
@@ -173,7 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         right: 0,
                         child: Container(
                           height: 2,
-                          color: Colors.blueAccent, // Adjust the color of the line
+                          color: Colors.blueAccent,
                         ),
                       ),
                   ],
@@ -201,18 +198,24 @@ class MyHomePageContent extends StatefulWidget {
 }
 
 class _MyHomePageContentState extends State<MyHomePageContent> {
-
   final user = FirebaseAuth.instance.currentUser;
   String phone = '+91';
 
   @override
   void initState() {
-
     if (user?.phoneNumber != null) {
       phone = user!.phoneNumber!.substring(3);
     }
-
     super.initState();
+  }
+
+  Future<int> fetchNotesCount() async {
+    final notesSnapshot = await FirebaseFirestore.instance
+        .collection("Students")
+        .doc(phone)
+        .collection("Notes")
+        .get();
+    return notesSnapshot.size;
   }
 
   @override
@@ -230,66 +233,85 @@ class _MyHomePageContentState extends State<MyHomePageContent> {
         child: FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
           future: FirebaseFirestore.instance.collection("Event").get(),
           builder: (context, eventSnapshot) {
-            if (eventSnapshot.hasError || eventSnapshot.connectionState == ConnectionState.waiting) {
+            if (eventSnapshot.hasError ||
+                eventSnapshot.connectionState == ConnectionState.waiting) {
               return Center(
                 child: CircularProgressIndicator(),
               );
             }
 
             final events = eventSnapshot.data!.docs;
-            final eventCount = events.length; //You should initialize this variable with the registered phone number
+            final eventCount = events.length;
 
-            return FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
-              future: FirebaseFirestore.instance
-                  .collection("Students")
-                  .where("Registered_number", isEqualTo: phone)
-                  .get(),
-              builder: (context, resultSnapshot) {
-                if (resultSnapshot.hasError || resultSnapshot.connectionState == ConnectionState.waiting) {
+            return FutureBuilder<int>(
+              future: fetchNotesCount(),
+              builder: (context, notesCountSnapshot) {
+                if (notesCountSnapshot.hasError ||
+                    notesCountSnapshot.connectionState ==
+                        ConnectionState.waiting) {
                   return Center(
                     child: CircularProgressIndicator(),
                   );
                 }
 
-                final resultData = resultSnapshot.data!.docs;
-                if (resultData.isEmpty) {
-                  // Handle case where no documents match the query
-                  return Text("No data available");
-                }
+                final notesCount = notesCountSnapshot.data ?? 0;
 
-                final studentData = resultData.first.data() as Map<String, dynamic>;
-                final studentName = studentData['Full Name'];
+                return FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                  future: FirebaseFirestore.instance
+                      .collection("Students")
+                      .where("Registered_number", isEqualTo: phone)
+                      .get(),
+                  builder: (context, resultSnapshot) {
+                    if (resultSnapshot.hasError ||
+                        resultSnapshot.connectionState ==
+                            ConnectionState.waiting) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
 
-                final exams = (studentData['completed_exams']) as List;
-                final resultCount = exams.length;
+                    final resultData = resultSnapshot.data!.docs;
+                    if (resultData.isEmpty) {
+                      // Handle case where no documents match the query
+                      return Text("No data available");
+                    }
 
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Padding(
-                        padding: EdgeInsets.only(top: 30, left: 20),
-                        child: Text(
-                          'Hello $studentName', // Display the student's name
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 34,
-                            fontWeight: FontWeight.bold,
-                            fontStyle: FontStyle.italic,
+                    final studentData =
+                    resultData.first.data() as Map<String, dynamic>;
+                    final studentName = studentData['Full Name'];
+
+                    final exams = (studentData['completed_exams']) as List;
+                    final resultCount = exams.length;
+
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 30, left: 20),
+                            child: Text(
+                              'Hello $studentName',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 34,
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-
-                    CustomSlider(
-                      eventCount: eventCount,
-                      resultCount: resultCount,
-                    ),
-                    CustomCarouselSlider(),
-                    TeacherWidget(),
-                  ],
+                        CustomSlider(
+                          eventCount: eventCount,
+                          resultCount: resultCount,
+                          notesCount: notesCount,
+                        ),
+                        CustomCarouselSlider(),
+                        TeacherWidget(),
+                      ],
+                    );
+                  },
                 );
               },
             );
@@ -299,4 +321,3 @@ class _MyHomePageContentState extends State<MyHomePageContent> {
     );
   }
 }
-
