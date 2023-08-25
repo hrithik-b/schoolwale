@@ -33,7 +33,7 @@ class ResultPage extends StatelessWidget {
               );
             }
             final data = snapshot.data!.data();
-            final exams = (data?['Completed_exams']) as List;
+            final exams = (data?['completed_exams']) as List;
             //print(exams);
             return ResultPageContent(
               exams_data: exams,
