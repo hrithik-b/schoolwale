@@ -67,102 +67,115 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
         child: Column(
           children: [
             Container(
-              width: 360,
+              margin: EdgeInsets.only(top: 20, left: 20, right: 20),
               height: 100,
-              color: primaryColor,
-            ),
-            FutureBuilder<Map<String, dynamic>>(
-              future: fetchStudentData(),
-              builder: (context, snapshot) {
-                if (snapshot.hasError ||
-                    snapshot.connectionState == ConnectionState.waiting) {
-                  return CircularProgressIndicator();
-                }
+              width: 500,
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0xffDDDDDD),
+                    blurRadius: 6.0,
+                    spreadRadius: 6.0,
+                    offset: Offset(0.0, 0.0),
+                  )
+                ],
+                color: Color.fromARGB(255, 93, 156, 216),
+                borderRadius: BorderRadius.circular(50),
+              ),
+              child: FutureBuilder<Map<String, dynamic>>(
+                future: fetchStudentData(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError ||
+                      snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  }
 
-                final studentData = snapshot.data;
-                final studentName = studentData?['Full Name'] ?? 'N/A';
-                final className = studentData?['Class'] ?? 'N/A';
-                final section = studentData?['Section'] ?? 'N/A';
-                final photoUrl = studentData?['ImageUrl'] ?? '';
+                  final studentData = snapshot.data;
+                  final studentName = studentData?['Full Name'] ?? 'N/A';
+                  final className = studentData?['Class'] ?? 'N/A';
+                  final section = studentData?['Section'] ?? 'N/A';
+                  final photoUrl = studentData?['ImageUrl'] ?? '';
 
-                return Row(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(30),
-                        child: Image.network(
-                          photoUrl,
-                          height: 80,
-                          width: 80,
-                          fit: BoxFit.cover,
+                  return Row(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(30),
+                          child: Image.network(
+                            photoUrl,
+                            height: 80,
+                            width: 80,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            studentName,
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Text(
-                            '$className $section',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      child: StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(
-                        stream: FirebaseFirestore.instance
-                            .collection("Attendance") // Update collection name if needed
-                            .doc(phone) // Assuming the document ID is the phone number
-                            .snapshots(),
-                        builder: (context, snapshot) {
-                          if (snapshot.hasError ||
-                              snapshot.connectionState == ConnectionState.waiting) {
-                            return CircularProgressIndicator();
-                          }
-
-                          final data = snapshot.data?.data();
-                          final int totalDays = data?['totalDays'] ?? 0;
-                          final List<String> absentDays = data?['absentDays'] ?? [];
-
-                          final double attendancePercentage =
-                              (1 - (absentDays.length / totalDays)) * 100;
-
-                          return CircularPercentIndicator(
-                            radius: 30.0,
-                            lineWidth: 8.0,
-                            animation: true,
-                            percent: attendancePercentage / 100,
-                            center: Text(
-                              "${attendancePercentage.toStringAsFixed(1)}%",
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              studentName,
                               style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12.0,
+                                fontSize: 20,
+                                color: Colors.white,
                               ),
                             ),
-                            circularStrokeCap: CircularStrokeCap.round,
-                            progressColor: Color.fromARGB(255, 255, 255, 255),
-                          );
-                        },
+                            SizedBox(height: 5),
+                            Text(
+                              '$className $section',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                );
-              },
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        child: FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
+                          future: FirebaseFirestore.instance
+                              .collection("Attendance")
+                              .doc(phone)
+                              .get(),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasError ||
+                                snapshot.connectionState == ConnectionState.waiting) {
+                              return CircularProgressIndicator();
+                            }
+
+                            final data = snapshot.data?.data();
+                            final int totalDays = data?['totalDays'] ?? 0;
+
+                            final absentDays = data?['absentDays'] ?? [];
+
+                            final double attendancePercentage =
+                                ((totalDays - absentDays.length) / totalDays) * 100;
+
+                            return CircularPercentIndicator(
+                              radius: 30.0,
+                              lineWidth: 8.0,
+                              animation: true,
+                              percent: attendancePercentage / 100,
+                              center: Text(
+                                "${attendancePercentage.toStringAsFixed(1)}%",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12.0,
+                                ),
+                              ),
+                              circularStrokeCap: CircularStrokeCap.round,
+                              progressColor: Color.fromARGB(255, 255, 255, 255),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
             ),
             Container(
               child: StreamBuilder(

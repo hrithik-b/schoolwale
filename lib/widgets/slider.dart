@@ -35,12 +35,12 @@ class CustomSlider extends StatelessWidget {
               infoText: "$resultCount",
               containerColor: Color.fromARGB(255, 255, 212, 245),
             ),
-            _buildSliderItem(
-              heading: "Notes",
-              imageUrl: "assets/images/icons/notes.png",
-              infoText: "$notesCount",
-              containerColor: Color.fromARGB(255, 52, 225, 222),
-            ),
+            // _buildSliderItem(
+            //   heading: "Notes",
+            //   imageUrl: "assets/images/icons/notes.png",
+            //   infoText: "$notesCount",
+            //   containerColor: Color.fromARGB(255, 52, 225, 222),
+            // ),
           ],
         ),
       ),
